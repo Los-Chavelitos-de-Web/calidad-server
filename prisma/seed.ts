@@ -7,7 +7,7 @@ async function main() {
         data: {
             name: "Admin Relojería",
             email: "admin@relojeria.com",
-            password: "admin123", // En producción, ¡nunca sin encriptar!
+            password: "admin123",
             role: "ADMIN",
         },
     });
