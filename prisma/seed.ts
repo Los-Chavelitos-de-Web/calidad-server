@@ -1,56 +1,55 @@
-import { PrismaClient } from '../generated/prisma';
-
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    const alice = await prisma.user.upsert({
-        where: { email: 'alice@prisma.io' },
-        update: {},
-        create: {
-            email: 'alice@prisma.io',
-            name: 'Alice',
-            posts: {
-                create: {
-                    title: 'Check out Prisma with Next.js',
-                    content: 'https://www.prisma.io/nextjs',
-                    published: true,
-                },
-            },
+    // Crear usuarios
+    const admin = await prisma.user.create({
+        data: {
+            name: "Admin Relojería",
+            email: "admin@relojeria.com",
+            password: "admin123", // En producción, ¡nunca sin encriptar!
+            role: "ADMIN",
         },
     });
 
-    const bob = await prisma.user.upsert({
-        where: { email: 'bob@prisma.io' },
-        update: {},
-        create: {
-            email: 'bob@prisma.io',
-            name: 'Bob',
-            posts: {
-                create: [
-                    {
-                        title: 'Follow Prisma on Twitter',
-                        content: 'https://twitter.com/prisma',
-                        published: true,
-                    },
-                    {
-                        title: 'Follow Nexus on Twitter',
-                        content: 'https://twitter.com/nexusgql',
-                        published: true,
-                    },
-                ],
-            },
+    const cliente = await prisma.user.create({
+        data: {
+            name: "Juan Pérez",
+            email: "juan@cliente.com",
+            password: "cliente123",
         },
     });
 
-    console.log({ alice, bob })
+    // Crear productos
+    const productos = await prisma.product.createMany({
+        data: [
+            {
+                name: "Reloj Casio Clásico",
+                description: "Modelo digital resistente al agua.",
+                brand: "Casio",
+                price: 59.99,
+                stock: 20,
+            },
+            {
+                name: "Rolex Submariner",
+                description: "Reloj de lujo automático.",
+                brand: "Rolex",
+                price: 12500.00,
+                stock: 2,
+            },
+            {
+                name: "Seiko Diver",
+                description: "Reloj para buceo con movimiento automático.",
+                brand: "Seiko",
+                price: 450.00,
+                stock: 10,
+            },
+        ],
+    });
+
+    console.log("Seeds creados con éxito.");
 }
 
 main()
-    .then(async () => {
-        await prisma.$disconnect()
-    })
-    .catch(async (e) => {
-        console.error(e)
-        await prisma.$disconnect()
-        process.exit(1)
-    })
+    .catch((e) => console.error(e))
+    .finally(async () => await prisma.$disconnect());
