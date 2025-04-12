@@ -38,9 +38,8 @@ export class AuthService {
             const authPassw = await comparePassword(user.password, u?.password);
 
             if (authPassw) {
-
-                const payload = { userId: u.id, username: user.name, role: user.role };
-                console.log(this.jwtConfig.getConfig());
+                
+                const payload = { userId: u.id, username: user.name, role: u.role };
                 
                 return {
                     token: await this.jwtService.signAsync(payload, this.jwtConfig.getConfig()),
