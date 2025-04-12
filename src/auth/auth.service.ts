@@ -1,16 +1,16 @@
 import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/models/User';
 import { PrismaService } from 'src/prisma.service';
 import { comparePassword } from 'src/utils/bcrypt';
+import { JWTConfig } from 'src/utils/jwt';
 
 @Injectable()
 export class AuthService {
 
     constructor(private readonly prisma: PrismaService,
         private readonly jwtService: JwtService,
-        private readonly configService: ConfigService) { }
+        private readonly jwtConfig: JWTConfig) { }
 
     async register(user: User) {
         try {
@@ -40,10 +40,10 @@ export class AuthService {
             if (authPassw) {
 
                 const payload = { userId: u.id, username: user.name, role: user.role };
+                console.log(this.jwtConfig.getConfig());
+                
                 return {
-                    token: await this.jwtService.signAsync(payload, {
-                        secret: this.configService.get<string>('JWT_SECRET'),
-                    }),
+                    token: await this.jwtService.signAsync(payload, this.jwtConfig.getConfig()),
                 };
 
             } else {
