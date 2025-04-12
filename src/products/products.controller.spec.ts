@@ -11,24 +11,6 @@ describe('ProductsController', () => {
 
   beforeAll(async () => {
     prismaClient = new PrismaClient();
-    await prismaClient.$connect();
-
-    await prismaClient.product.create({
-      data: {
-        name: '',
-        description: '',
-        brand: '',
-        price: 100,
-        stock: 10,
-        createdAt: new Date(),
-      },
-    });
-  });
-
-  afterAll(async () => {
-    // Limpiar la base de datos después de todas las pruebas
-    await prismaClient.product.deleteMany({});
-    await prismaClient.$disconnect();
   });
 
   beforeEach(async () => {
