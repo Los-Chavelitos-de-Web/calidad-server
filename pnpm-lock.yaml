@@ -17,6 +17,9 @@ importers:
       '@nestjs/platform-express':
         specifier: ^11.0.1
         version: 11.0.16(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.1)(file-type@19.6.0)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.16)
+      airclock-server:
+        specifier: 'link:'
+        version: 'link:'
       bcryptjs:
         specifier: ^3.0.2
         version: 3.0.2
