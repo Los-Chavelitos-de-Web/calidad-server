@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { Role } from '@prisma/client';
+import { Contains, IsArray, IsNotEmpty, IsString } from 'class-validator';
 
 export class User {
   @IsString()
@@ -12,4 +13,6 @@ export class User {
   @IsString()
   @IsNotEmpty()
   password: string;
+
+  role?: Role;
 }
