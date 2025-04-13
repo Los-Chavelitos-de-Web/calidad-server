@@ -4,7 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from 'src/models/User';
+import { UserLogin, UserRegister } from 'src/models/User';
 import { PrismaService } from 'src/prisma.service';
 import { comparePassword } from 'src/utils/bcrypt';
 import { JWTConfig } from 'src/utils/jwt';
@@ -17,7 +17,7 @@ export class AuthService {
     private readonly jwtConfig: JWTConfig,
   ) {}
 
-  async register(user: User) {
+  async register(user: UserRegister) {
     try {
       const r = await this.prisma.user.create({ data: user });
       return {
@@ -32,7 +32,7 @@ export class AuthService {
     }
   }
 
-  async login(user: User) {
+  async login(user: UserLogin) {
     const u = await this.prisma.user.findUnique({
       where: {
         email: user.email,
@@ -43,7 +43,7 @@ export class AuthService {
       const authPassw = await comparePassword(user.password, u?.password);
 
       if (authPassw) {
-        const payload = { userId: u.id, username: user.name, role: u.role };
+        const payload = { userId: u.id, username: u.name, role: u.role };
 
         return {
           token: await this.jwtService.signAsync(
