@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { User } from 'src/models/User';
+import { UserLogin, UserRegister } from 'src/models/User';
 import { genHash } from 'src/utils/bcrypt';
 
 @Controller('auth')
@@ -10,13 +10,13 @@ export class AuthController {
     ) { }
 
     @Post('register')
-    async register(@Body() user: User) {
+    async register(@Body() user: UserRegister) {
         user.password = await genHash(user.password);
         return this.authService.register(user);
     }
 
     @Post('login')
-    login(@Body() user: User) {
+    login(@Body() user: UserLogin) {
         return this.authService.login(user);
     }
 

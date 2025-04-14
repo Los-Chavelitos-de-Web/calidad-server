@@ -1,11 +1,27 @@
 import { Role } from '@prisma/client';
-import { Contains, IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
 
-export class User {
+export class UserRegister {
   @IsString()
   @IsNotEmpty()
+  @MinLength(3)
+  @MaxLength(50)
   name: string;
 
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(5)
+  email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(8)
+  password: string;
+
+  role?: Role;
+}
+
+export class UserLogin {
   @IsString()
   @IsNotEmpty()
   email: string;
@@ -13,6 +29,4 @@ export class User {
   @IsString()
   @IsNotEmpty()
   password: string;
-
-  role?: Role;
 }

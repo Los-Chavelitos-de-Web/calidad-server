@@ -6,11 +6,12 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
+import { PayModule } from './pay/pay.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-  }), ProductsModule, AuthModule, UsersModule, JwtModule],
+  }), ProductsModule, AuthModule, UsersModule, JwtModule, PayModule],
   controllers: [AppController],
   providers: [AppService],
 })
