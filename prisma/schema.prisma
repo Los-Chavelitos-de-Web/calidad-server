@@ -9,23 +9,24 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(50)
-  email     String   @unique
-  password  String
+  name      String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(100)
+  password  String   @db.VarChar(100)
   role      Role     @default(CUSTOMER)
   createdAt DateTime @default(now())
   sales     Sale[]
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  title        String
-  description String?
-  brand       String
-  price       Float
-  stock       Int
-  createdAt   DateTime @default(now())
-  sales       SaleItem[]
+  id             Int       @id @default(autoincrement())
+  title          String    @db.VarChar(100)
+  description    String?   @db.Text
+  specifications Json?     // Specs técnicas en formato clave/valor
+  manualUrl      String?   @db.Text
+  price          Float
+  stock          Int
+  createdAt      DateTime  @default(now())
+  sales          SaleItem[]
 }
 
 model Sale {
@@ -44,7 +45,7 @@ model SaleItem {
   product      Product @relation(fields: [productId], references: [id])
   productId    Int
   quantity     Int
-  unit_price   Float
+  unitPrice    Float
 }
 
 enum Role {
