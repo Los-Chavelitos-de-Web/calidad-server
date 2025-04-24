@@ -12,18 +12,18 @@ export interface Product {
 export class ProductPay {
 
   @IsNotEmpty()
-  id: string;
+  id: string = '';
 
   @IsNotEmpty()
   @IsString()
   @MinLength(5)
-  title: string;
+  title: string = '';
 
   @IsNotEmpty()
   @IsNumber()
-  quantity: number;
+  quantity: number = 0;
 
   @IsNotEmpty()
   @IsNumber()
-  unit_price: number;
+  unit_price: number = 0;
 }

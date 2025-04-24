@@ -6,17 +6,17 @@ export class UserRegister {
   @IsNotEmpty()
   @MinLength(3)
   @MaxLength(50)
-  name: string;
+  name: string = '';
 
   @IsString()
   @IsNotEmpty()
   @MinLength(5)
-  email: string;
+  email: string = '';
 
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
-  password: string;
+  password: string = '';
 
   role?: Role;
 }
@@ -24,9 +24,9 @@ export class UserRegister {
 export class UserLogin {
   @IsString()
   @IsNotEmpty()
-  email: string;
+  email: string = '';
 
   @IsString()
   @IsNotEmpty()
-  password: string;
+  password: string = '';
 }
