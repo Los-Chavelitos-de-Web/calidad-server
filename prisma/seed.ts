@@ -3,22 +3,22 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Crear usuarios
-  await prisma.user.create({
-    data: {
-      name: 'Admin Relojería',
-      email: 'admin@relojeria.com',
-      password: 'admin123',
-      role: 'ADMIN',
-    },
-  });
+  // await prisma.user.create({
+  //   data: {
+  //     name: '',
+  //     email: '',
+  //     password: '',
+  //     role: 'ADMIN',
+  //   },
+  // });
 
-  await prisma.user.create({
-    data: {
-      name: 'Juan Pérez',
-      email: 'juan@cliente.com',
-      password: 'cliente123',
-    },
-  });
+  // await prisma.user.create({
+  //   data: {
+  //     name: '',
+  //     email: '',
+  //     password: '',
+  //   },
+  // });
 
   // Crear productos
   await prisma.product.createMany({
