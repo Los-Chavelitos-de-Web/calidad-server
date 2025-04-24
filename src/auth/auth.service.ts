@@ -4,10 +4,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserLogin, UserRegister } from 'src/models/User';
-import { PrismaService } from 'src/prisma.service';
-import { comparePassword } from 'src/utils/bcrypt';
-import { JWTConfig } from 'src/utils/jwt';
+import { Prisma } from '@prisma/client';
+import { UserLogin, UserRegister } from '../models/User';
+import { PrismaService } from '../prisma.service';
+import { comparePassword } from '../utils/bcrypt';
+import { JWTConfig } from '../utils/jwt';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly jwtConfig: JWTConfig,
-  ) {}
+  ) { }
 
   async register(user: UserRegister) {
     try {
@@ -25,10 +26,25 @@ export class AuthService {
         data: r,
       };
     } catch (error) {
-      throw new NotFoundException({
-        message: 'Error creating user',
-        error: error.meta,
-      });
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        // Puedes acceder a error.meta, error.code, etc.
+        throw new NotFoundException({
+          message: 'Error creating user',
+          error: error.meta,
+        });
+      } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+        // Error desconocido de Prisma
+        throw new NotFoundException({
+          message: 'Unknown error occurred during user creation',
+          error: error.message,
+        });
+      } else {
+        // Otros tipos de errores no relacionados con Prisma
+        throw new NotFoundException({
+          message: 'Unexpected error occurred',
+          error: error,
+        });
+      }
     }
   }
 
@@ -53,11 +69,13 @@ export class AuthService {
         };
       } else {
         throw new UnauthorizedException({
+          status: 401,
           message: 'Password incorrect',
         });
       }
     } else {
       throw new UnauthorizedException({
+        status: 401,
         message: 'User not exists',
       });
     }

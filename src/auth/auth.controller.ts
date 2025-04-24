@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { UserLogin, UserRegister } from 'src/models/User';
-import { genHash } from 'src/utils/bcrypt';
+import { UserLogin, UserRegister } from '../models/User';
+import { genHash } from '../utils/bcrypt';
 
 @Controller('auth')
 export class AuthController {
