@@ -28,18 +28,18 @@ describe('ProductsController', () => {
   });
 
   it('should return a list of products with correct attributes', async () => {
-    const result = await controller.getAllProducts();
+    const result = (await controller.getAllProducts()).map(({ specifications, ...rest }) => rest);
 
     expect(result).toEqual(
       expect.arrayContaining([
         {
-          id: expect.any(Number),
-          name: expect.any(String),
+          createdAt: expect.any(Date),
           description: expect.any(String),
-          brand: expect.any(String),
+          id: expect.any(Number),
+          manualUrl: expect.any(String),
           price: expect.any(Number),
           stock: expect.any(Number),
-          createdAt: expect.any(Date),
+          title: expect.any(String),
         },
       ]),
     );
