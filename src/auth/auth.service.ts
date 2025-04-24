@@ -53,11 +53,13 @@ export class AuthService {
         };
       } else {
         throw new UnauthorizedException({
+          status: 401,
           message: 'Password incorrect',
         });
       }
     } else {
       throw new UnauthorizedException({
+        status: 401,
         message: 'User not exists',
       });
     }
