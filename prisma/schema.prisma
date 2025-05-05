@@ -21,8 +21,8 @@ model User {
 model Product {
   id            Int         @id @default(autoincrement())
   title         String
-  description   String?
-  manualUrl     String?     @db.VarChar(1500)
+  description   String?     @db.VarChar(1500)
+  manualUrl     String?
   price         Float
   stock         Int
   createdAt     DateTime    @default(now())
