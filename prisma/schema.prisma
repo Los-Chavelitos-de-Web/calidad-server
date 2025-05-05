@@ -19,14 +19,13 @@ model User {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  title        String
-  description String?
-  brand       String
-  price       Float
-  stock       Int
-  createdAt   DateTime @default(now())
-  sales       SaleItem[]
+  id            Int         @id @default(autoincrement())
+  title         String
+  description   String?
+  manualUrl     String?     @db.VarChar(1500)
+  price         Float
+  stock         Int
+  createdAt     DateTime    @default(now())
 }
 
 model Sale {
@@ -42,7 +41,6 @@ model SaleItem {
   id           Int     @id @default(autoincrement())
   sale         Sale    @relation(fields: [saleId], references: [id])
   saleId       Int
-  product      Product @relation(fields: [productId], references: [id])
   productId    Int
   quantity     Int
   unit_price   Float
