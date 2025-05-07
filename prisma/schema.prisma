@@ -1,11 +1,25 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated"
 }
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Product {
+  id           Int      @id @default(autoincrement())
+  title        String
+  brand        String
+  model        String?
+  category     String
+  manufacturer String?
+  description  String?  @db.VarChar(1500)
+  specs        Json?
+  manualUrl    String?
+  price        Float?
+  stock        Int      @default(0)
+  createdAt    DateTime @default(now())
 }
 
 model User {
@@ -18,32 +32,22 @@ model User {
   sales     Sale[]
 }
 
-model Product {
-  id            Int         @id @default(autoincrement())
-  title         String
-  description   String?     @db.VarChar(1500)
-  manualUrl     String?
-  price         Float
-  stock         Int
-  createdAt     DateTime    @default(now())
-}
-
 model Sale {
-  id         Int       @id @default(autoincrement())
-  user       User      @relation(fields: [userId], references: [id])
-  userId     Int
-  createdAt  DateTime  @default(now())
-  total      Float
-  items      SaleItem[]
+  id        Int        @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime   @default(now())
+  total     Float
+  items     SaleItem[]
 }
 
 model SaleItem {
-  id           Int     @id @default(autoincrement())
-  sale         Sale    @relation(fields: [saleId], references: [id])
-  saleId       Int
-  productId    Int
-  quantity     Int
-  unit_price   Float
+  id         Int   @id @default(autoincrement())
+  sale       Sale  @relation(fields: [saleId], references: [id])
+  saleId     Int
+  productId  Int
+  quantity   Int
+  unit_price Float
 }
 
 enum Role {
