@@ -8,8 +8,7 @@ import { UserLogin, UserRegister } from '../models/User';
 import { PrismaService } from '../prisma.service';
 import { comparePassword } from '../utils/bcrypt';
 import { JWTConfig } from '../utils/jwt';
-import { Prisma } from '../../prisma/generated';
-
+import { Prisma } from '@prisma/client';
 @Injectable()
 export class AuthService {
   constructor(
