@@ -3,6 +3,8 @@ import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { ProductPay } from '../../src/models/Product';
 import { PrismaService } from '../../src/prisma.service';
 import { factura } from 'src/utils/genFacturas';
+import { ClienteType } from 'src/types/facturas';
+import { sendPaySuccess } from 'src/utils/sendMail';
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_API_KEY || '',
@@ -54,8 +56,9 @@ export class PayService {
         producto: item.title,
         cantidad: item.quantity + '',
         precio_base: item.unit_price + '',
-        codigo_sunat: '-',
+        codigo_producto: item.id + '',
         codigo_unidad: 'ZZ',
+        codigo_sunat: '-',
         tipo_igv_codigo: '10'
       }));
 
@@ -98,11 +101,39 @@ export class PayService {
         id: userId?.userId,
       },
       select: {
+        dni: true,
+        name: true,
         email: true,
       },
     });
 
-    return prefId;
-    // await factura(prefId);
+    const items = await this.prisma.saleItem.findMany({
+      where: {
+        saleId: prefId,
+      },
+      select: {
+        producto: true,
+        codigo_producto: true,
+        cantidad: true,
+        precio_base: true,
+        codigo_unidad: true,
+        codigo_sunat: true,
+        tipo_igv_codigo: true,
+      },
+    });
+
+    const cliente: ClienteType = {
+      numero_documento: '000' + user?.dni || '00000000000',
+      razon_social_nombres: user?.name,
+      codigo_tipo_entidad: '6',
+      cliente_direccion: '',
+    };
+
+    const { data } = await factura(cliente, items);
+    const { ruta_pdf } = data;
+
+    await sendPaySuccess(prefId, user?.email || '', items, ruta_pdf);
+
+    return 'Pago realizado correctamente';
   }
 }
