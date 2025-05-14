@@ -1,6 +1,27 @@
 import { ClienteType, ItemsType } from "../../src/types/facturas";
 
 export const factura = async (cliente: ClienteType, items: ItemsType[]) => {
+
+  const total_gravada = items.reduce((acc, item) => acc + parseInt(item.precio_base) * parseInt(item.cantidad), 0);
+  const total_igv = total_gravada * 0.18; // 18% IGV
+
+  const venta = {
+    serie: new Date().getFullYear(),
+    numero: "12345",
+    fecha_emision: new Date().toISOString().split('T')[0],
+    hora_emision: new Date().toISOString().split('T')[1].split('.')[0].replace(' ', ''),
+    fecha_vencimiento: "",
+    moneda_id: "2",
+    forma_pago_id: "1",
+    total_gravada: total_gravada.toFixed(2),
+    total_igv: total_igv.toFixed(2),
+    total_exonerada: "",
+    total_inafecta: "",
+    tipo_documento_codigo: "01",
+    nota: "Gracias por su compra",
+  };
+
+
   const res = await fetch('https://facturaciondirecta.com/API_SUNAT/post.php', {
     method: 'POST',
     headers: {
@@ -9,21 +30,7 @@ export const factura = async (cliente: ClienteType, items: ItemsType[]) => {
     body: JSON.stringify({
       cliente,
       items,
-      venta: {
-        "serie": new Date().getFullYear(),
-        "numero": "000",
-        "fecha_emision": new Date().toISOString().split('T')[0],
-        "hora_emision": new Date().toISOString().split('T')[1].split('.')[0],
-        "fecha_vencimiento": "",
-        "moneda_id": "2",
-        "forma_pago_id": "1",
-        "total_gravada": "",
-        "total_igv": "",
-        "total_exonerada": "",
-        "total_inafecta": "",
-        "tipo_documento_codigo": "01",
-        "nota": "Gracias por su compra",
-      },
+      venta,
       empresa: {
         "ruc": "20526058578",
         "razon_social": "Comercial Rafael Norte S.A.C.",
@@ -42,6 +49,5 @@ export const factura = async (cliente: ClienteType, items: ItemsType[]) => {
   }
   );
 
-  const data = res.json();
-  console.log(data);
+  return await res.json();
 }
