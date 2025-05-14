@@ -33,21 +33,25 @@ model User {
 }
 
 model Sale {
-  id        Int        @id @default(autoincrement())
-  user      User       @relation(fields: [userId], references: [id])
+  id        String     @id
   userId    Int
   createdAt DateTime   @default(now())
   total     Float
-  items     SaleItem[]
+  status    String
+  user      User       @relation(fields: [userId], references: [id])
+  SaleItem  SaleItem[]
 }
 
 model SaleItem {
-  id         Int   @id @default(autoincrement())
-  sale       Sale  @relation(fields: [saleId], references: [id])
-  saleId     Int
-  productId  Int
-  quantity   Int
-  unit_price Float
+  id              Int    @id @default(autoincrement())
+  Sale            Sale   @relation(fields: [saleId], references: [id])
+  saleId          String
+  producto        String
+  cantidad        String
+  precio_base     String
+  codigo_sunat    String
+  codigo_unidad   String
+  tipo_igv_codigo String
 }
 
 enum Role {
