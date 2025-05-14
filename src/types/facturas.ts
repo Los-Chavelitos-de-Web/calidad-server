@@ -1,16 +1,49 @@
-export type ClienteType = {
-  razon_social_nombres: string,
-  numero_docuemnto: string,
-  codi_tipo_entidad: string,
-  cliente_direccion?: string,
+import { IsNotEmpty, IsString } from "node_modules/class-validator/types";
+
+export class ClienteType {
+  @IsString()
+  @IsNotEmpty()
+  razon_social_nombres: string | undefined = '';
+
+  @IsString()
+  @IsNotEmpty()
+  numero_documento: string | undefined = '';
+
+  @IsString()
+  @IsNotEmpty()
+  codigo_tipo_entidad: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  cliente_direccion?: string = '';
 }
 
-export type ItemsType = {
-  producto: string,
-  cantidad: string,
-  precio_base: string,
-  codigo_sunat: string,
-  codigo_producto: string,
-  codigo_unidad: string,
-  tipo_igv_codigo: string,
+export class ItemsType {
+  @IsString()
+  @IsNotEmpty()
+  producto: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  cantidad: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  precio_base: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  codigo_sunat: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  codigo_producto: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  codigo_unidad: string = '';
+
+  @IsString()
+  @IsNotEmpty()
+  tipo_igv_codigo: string = '';
 }
