@@ -1,4 +1,4 @@
-import { ClienteType, ItemsType } from "src/types/facturas";
+import { ClienteType, ItemsType } from "../../src/types/facturas";
 
 export const factura = async (cliente: ClienteType, items: ItemsType[]) => {
   const res = await fetch('https://facturaciondirecta.com/API_SUNAT/post.php', {
@@ -14,4 +14,7 @@ export const factura = async (cliente: ClienteType, items: ItemsType[]) => {
     }),
   }
   );
+
+  const data = res.json();
+  console.log(data);
 }
