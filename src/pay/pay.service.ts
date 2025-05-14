@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { ProductPay } from '../../src/models/Product';
 import { PrismaService } from '../../src/prisma.service';
+import { factura } from 'src/utils/genFacturas';
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_API_KEY || '',
@@ -27,9 +28,9 @@ export class PayService {
         body: {
           items: products,
           back_urls: {
-            success: `${process.env.FRONT_URL}/success`,
-            failure: `${process.env.FRONT_URL}/failure`,
-            pending: `${process.env.FRONT_URL}/pending`,
+            success: `${process.env.BACK_URL}/pay/success`,
+            failure: `${process.env.BACK_URL}/pay/failure`,
+            pending: `${process.env.BACK_URL}/pay/pending`,
           },
           payer: {
             email: correo,
@@ -79,5 +80,29 @@ export class PayService {
         error: e,
       });
     }
+  }
+
+  async success(prefId: string) {
+
+    const userId = await this.prisma.sale.findFirst({
+      where: {
+        id: prefId,
+      },
+      select: {
+        userId: true,
+      },
+    });
+
+    const user = await this.prisma.user.findFirst({
+      where: {
+        id: userId?.userId,
+      },
+      select: {
+        email: true,
+      },
+    });
+
+    return prefId;
+    // await factura(prefId);
   }
 }
