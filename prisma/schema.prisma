@@ -26,6 +26,7 @@ model User {
   id        Int      @id @default(autoincrement())
   name      String   @db.VarChar(50)
   email     String   @unique
+  dni       String
   password  String
   role      Role     @default(CUSTOMER)
   createdAt DateTime @default(now())
@@ -49,6 +50,7 @@ model SaleItem {
   producto        String
   cantidad        String
   precio_base     String
+  codigo_producto String
   codigo_sunat    String
   codigo_unidad   String
   tipo_igv_codigo String
