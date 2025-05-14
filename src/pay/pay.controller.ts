@@ -1,7 +1,6 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { PayService } from './pay.service';
-import { ProductPay } from 'src/models/Product';
-import { PayData } from 'src/types/PayTypes';
+import { PayData, PaySuccess } from '../../src/types/PayTypes';
 
 @Controller('pay')
 export class PayController {
@@ -10,5 +9,10 @@ export class PayController {
   @Post()
   payment(@Body() payData: PayData) {
     return this.payService.createPreference(payData.correo, payData.items);
+  }
+
+  @Get('success')
+  sucess(@Query() paySucess: PaySuccess) {
+    return this.payService.success(paySucess.preference_id);
   }
 }
