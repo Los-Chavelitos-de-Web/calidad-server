@@ -29,7 +29,7 @@ export class UsersController {
       }
 
       const userRole = decoded['role'];
-      const requiredRole = 'ADMIN';
+      const requiredRole = 'GERENTE';
 
       if (userRole !== requiredRole) {
         throw new ForbiddenException({

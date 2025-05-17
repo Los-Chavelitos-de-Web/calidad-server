@@ -13,7 +13,7 @@ describe('UsersController', () => {
   let jwtService: JwtService;
 
   const mockUsers = [
-    { id: 1, name: 'Test User', email: 'test@example.com', role: Role.CUSTOMER },
+    { id: 1, name: 'Test User', email: 'test@example.com', role: Role.CLIENTE },
   ];
 
   const jwtServiceMock = {
@@ -43,8 +43,8 @@ describe('UsersController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should return all users if token is valid and role is ADMIN', async () => {
-    jwtServiceMock.verify.mockReturnValueOnce({ role: Role.ADMIN });
+  it('should return all users if token is valid and role is GERENTE', async () => {
+    jwtServiceMock.verify.mockReturnValueOnce({ role: Role.GERENTE });
 
     const result = await controller.getAllUsers('Bearer valid-token');
     expect(userService.getAllUsers).toHaveBeenCalled();
@@ -63,8 +63,8 @@ describe('UsersController', () => {
     await expect(controller.getAllUsers('Bearer invalid-token')).rejects.toThrow(UnauthorizedException);
   });
 
-  it('should throw ForbiddenException if user role is not ADMIN', async () => {
-    jwtServiceMock.verify.mockReturnValueOnce({ role: Role.CUSTOMER });
+  it('should throw ForbiddenException if user role is not GERENTE', async () => {
+    jwtServiceMock.verify.mockReturnValueOnce({ role: Role.CLIENTE });
 
     await expect(controller.getAllUsers('Bearer token')).rejects.toThrow(ForbiddenException);
   });
