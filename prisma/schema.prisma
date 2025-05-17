@@ -28,7 +28,7 @@ model User {
   email     String   @unique
   dni       String
   password  String
-  role      Role     @default(CUSTOMER)
+  role      Role     @default(CLIENTE)
   createdAt DateTime @default(now())
   sales     Sale[]
 }
@@ -57,6 +57,7 @@ model SaleItem {
 }
 
 enum Role {
-  ADMIN
-  CUSTOMER
+  GERENTE
+  ALMACEN_VENTAS
+  CLIENTE
 }

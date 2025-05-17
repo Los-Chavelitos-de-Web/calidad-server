@@ -5,9 +5,9 @@ import { AuthController } from './auth.controller';
 import { PrismaService } from '../prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { JWTConfig } from '../utils/jwt';
-import { UnauthorizedException, NotFoundException } from '@nestjs/common';
+import { UnauthorizedException } from '@nestjs/common';
 import * as bcryptUtils from '../utils/bcrypt';
-import { UserRegister } from 'src/models/User';
+import { Role } from '../../prisma/generated';
 
 describe('Auth Module', () => {
   let authService: AuthService;
@@ -67,7 +67,7 @@ describe('Auth Module', () => {
     });
     describe('login', () => {
       it('should return token on successful login', async () => {
-        const mockUser = { id: 1, email: 'test@example.com', password: 'hashedpass', name: 'Test', role: 'user' };
+        const mockUser = { id: 1, email: 'test@example.com', password: 'hashedpass', name: 'Test', role: Role.CLIENTE };
         (prismaMock.user.findUnique as jest.Mock).mockResolvedValue(mockUser);
 
         jest.spyOn(bcryptUtils, 'comparePassword').mockResolvedValue(true);
@@ -85,7 +85,7 @@ describe('Auth Module', () => {
       });
 
       it('should throw UnauthorizedException if password incorrect', async () => {
-        const mockUser = { id: 1, email: 'test@example.com', password: 'hashedpass', name: 'Test', role: 'user' };
+        const mockUser = { id: 1, email: 'test@example.com', password: 'hashedpass', name: 'Test', role: Role.CLIENTE };
         (prismaMock.user.findUnique as jest.Mock).mockResolvedValue(mockUser);
         jest.spyOn(bcryptUtils, 'comparePassword').mockResolvedValue(false);
 
@@ -111,7 +111,7 @@ describe('Auth Module', () => {
         jest.spyOn(bcryptUtils, 'genHash').mockResolvedValue('hashedPassword');
         jest.spyOn(authService, 'register').mockResolvedValue({
           message: 'User created successfully',
-          data: { id: 0, role: 'CUSTOMER', createdAt: now, ...user, password: 'hashedPassword' },
+          data: { id: 0, role: Role.CLIENTE, createdAt: now, ...user, password: 'hashedPassword' },
         });
 
         const result = await authController.register(user);
@@ -120,7 +120,7 @@ describe('Auth Module', () => {
         expect(authService.register).toHaveBeenCalledWith({ ...user, password: 'hashedPassword' });
         expect(result).toEqual({
           message: 'User created successfully',
-          data: { id: 0, role: 'CUSTOMER', createdAt: now, ...user, password: 'hashedPassword' },
+          data: { id: 0, role: Role.CLIENTE, createdAt: now, ...user, password: 'hashedPassword' },
         });
       });
     });
