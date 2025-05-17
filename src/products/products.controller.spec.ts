@@ -41,13 +41,31 @@ describe('ProductsController', () => {
         expect.objectContaining({
           id: expect.any(Number),
           title: expect.any(String),
-          description: expect.any(String),
-          manualUrl: expect.any(String),
-          price: expect.any(Number),
           stock: expect.any(Number),
           createdAt: expect.any(Date),
+          brand: expect.any(String),
+          category: expect.any(String),
+          model: expect.any(String),
+          specs: expect.any(Object),
         }),
       );
+
+      expect(
+        product.description === null || typeof product.description === 'string'
+      ).toBe(true);
+
+      expect(
+        product.price === null || typeof product.price === 'number'
+      ).toBe(true);
+
+      expect(
+        product.manualUrl === null || typeof product.manualUrl === 'string'
+      ).toBe(true);
+
+      expect(
+        product.manufacturer === null || typeof product.manufacturer === 'string'
+      ).toBe(true);
+
     }
   });
 });
