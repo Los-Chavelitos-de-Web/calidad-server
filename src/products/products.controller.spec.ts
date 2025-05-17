@@ -41,7 +41,7 @@ describe('ProductsController', () => {
         expect.objectContaining({
           id: expect.any(Number),
           title: expect.any(String),
-          stock: expect.any(Number),
+          stock: expect.any(Object),
           createdAt: expect.any(Date),
           brand: expect.any(String),
           category: expect.any(String),
