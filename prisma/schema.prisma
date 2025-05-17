@@ -18,7 +18,7 @@ model Product {
   specs        Json?
   manualUrl    String?
   price        Float?
-  stock        Int      @default(0)
+  stock        Json
   createdAt    DateTime @default(now())
 }
 
