@@ -71,7 +71,13 @@ async function main() {
           manufacturer: 'CIFARELLI S.P.A. MADE IN ITALY',
           membraneRuixing: 'Graduada: 18 L / Máxima: 20 L',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Soplador de Mochila Cifarelli BL 1200',
         brand: 'Cifarelli',
@@ -117,7 +123,13 @@ async function main() {
           ],
           manufacturer: 'CIFARELLI S.P.A. MADE IN ITALY',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Espolvoreador Cifarelli M1200PG',
         brand: 'Cifarelli',
@@ -162,7 +174,13 @@ async function main() {
           ],
           manufacturer: 'CIFARELLI S.P.A. MADE IN ITALY',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motobomba Ducati DCW35251',
         brand: 'Ducati',
@@ -200,7 +218,13 @@ async function main() {
           ],
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Biotrituradora a Gasolina Ducati DWS65',
         brand: 'Ducati',
@@ -248,7 +272,13 @@ async function main() {
           ],
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Biotrituradora a Gasolina Ducati DWS150-DWS150E',
         brand: 'Ducati',
@@ -296,7 +326,13 @@ async function main() {
           ],
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor 4T OHV Monocilíndrico Ducati DPE270Q',
         brand: 'Ducati',
@@ -330,7 +366,13 @@ async function main() {
           easyStart: 'Sí / Yes',
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Pulverizador Mochila DSP 2000',
         brand: 'Ducati',
@@ -353,7 +395,13 @@ async function main() {
           pumpType: 'Manual',
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motoazada Diesel DTL 11000D',
         brand: 'Ducati',
@@ -399,7 +447,13 @@ async function main() {
           eanCode: '8434691266735',
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motoazada Gasolina DTL 10000',
         brand: 'Ducati',
@@ -443,7 +497,13 @@ async function main() {
           eanCode: '8434691266711',
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motobomba Aguas Limpias DCW502',
         brand: 'Ducati',
@@ -483,7 +543,13 @@ async function main() {
           eanCode: '8434691037090',
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motobomba Aguas Limpias DCW802',
         brand: 'Ducati',
@@ -523,7 +589,13 @@ async function main() {
           eanCode: '8434691037106',
           manufacturer: 'DUCATI Licensed',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor 4T OHV Monocilíndrico DPE 390Q',
         brand: 'Ducati',
@@ -557,7 +629,13 @@ async function main() {
           manufacturer: 'DUCATI Licensed',
           optionalFeatures: ['Wet air filter in oil', 'Silent aluminized'],
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor 4T OHV Monocilíndrico DPE 210Q',
         brand: 'Ducati',
@@ -591,7 +669,13 @@ async function main() {
           manufacturer: 'DUCATI Licensed',
           optionalFeatures: ['Wet air filter in oil'],
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Pulverizador Mochila Líquidos DSP 2500',
         brand: 'Ducati',
@@ -667,7 +751,13 @@ async function main() {
           },
         ],
         manufacturer: 'DUCATI Licensed',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Planta de Emergencia EZ6500CXS',
         brand: 'Ducati',
@@ -695,7 +785,14 @@ async function main() {
           },
         ],
         manufacturer: 'DUCATI Licensed',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
+
       },
+
       {
         title: 'Motor GP160H QH1',
         brand: 'Honda',
@@ -731,7 +828,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX430',
         brand: 'Honda',
@@ -768,7 +871,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Bomba Tragasólidos WT30XK4',
         brand: 'Honda',
@@ -800,7 +909,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Bomba Autocebante WL20XH',
         brand: 'Honda',
@@ -841,7 +956,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Bomba Autocebante WL20XH',
         brand: 'Honda',
@@ -882,7 +1003,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Bomba Autocebante WL20XH',
         brand: 'Honda',
@@ -923,7 +1050,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Bomba Autocebante WB30XH2',
         brand: 'Honda',
@@ -963,7 +1096,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Bomba Tragasólidos WT40XK3',
         brand: 'Honda',
@@ -998,7 +1137,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador EG1000N',
         brand: 'Honda',
@@ -1051,7 +1196,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador EG5000CX',
         brand: 'Honda',
@@ -1109,7 +1260,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador EG6500CXS-S1H',
         brand: 'Honda',
@@ -1166,7 +1323,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador EM10000K1',
         brand: 'Honda',
@@ -1227,7 +1390,13 @@ async function main() {
           },
         ],
         manufacturer: 'Honda',
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador GXH50',
         brand: 'Honda',
@@ -1270,7 +1439,13 @@ async function main() {
           overloadAlarm: false,
           voltMeter: false,
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador GXR120T',
         brand: 'Honda',
@@ -1313,7 +1488,13 @@ async function main() {
           overloadAlarm: false,
           voltMeter: false,
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Generador GP200',
         brand: 'Honda',
@@ -1358,7 +1539,13 @@ async function main() {
           voltMeter: true,
           fuelMeter: true,
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GP200H',
         brand: 'Honda',
@@ -1401,7 +1588,13 @@ async function main() {
           oilAlertSystem: false,
           recommendedOperatingRpmRange: '2000-3600',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX120T3',
         brand: 'Honda',
@@ -1444,7 +1637,13 @@ async function main() {
           oilAlertSystem: false,
           recommendedOperatingRpmRange: '2000-3600',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX160H2',
         brand: 'Honda',
@@ -1487,7 +1686,13 @@ async function main() {
           oilAlertSystem: true,
           recommendedOperatingRpmRange: '2000-3600',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX200T2',
         brand: 'Honda',
@@ -1530,7 +1735,13 @@ async function main() {
           oilAlertSystem: null, // No especificado
           recommendedOperatingRpmRange: '2000-3600', // Rango recomendado de operación
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX200T2',
         brand: 'Honda',
@@ -1573,7 +1784,13 @@ async function main() {
           oilAlertSystem: null, // No especificado
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX270H2',
         brand: 'Honda',
@@ -1616,7 +1833,13 @@ async function main() {
           oilAlertSystem: 'Sí',
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX35T',
         brand: 'Honda',
@@ -1659,7 +1882,13 @@ async function main() {
           oilAlertSystem: null, // No especificado
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX390H2',
         brand: 'Honda',
@@ -1702,7 +1931,13 @@ async function main() {
           oilAlertSystem: 'Sí',
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX50T',
         brand: 'Honda',
@@ -1745,7 +1980,13 @@ async function main() {
           oilAlertSystem: null, // No especificado
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX630RH',
         brand: 'Honda',
@@ -1788,7 +2029,13 @@ async function main() {
           oilAlertSystem: 'No',
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GXR120RT',
         brand: 'Honda',
@@ -1831,7 +2078,13 @@ async function main() {
           oilAlertSystem: 'Sí',
           additionalFeatures: null, // No especificados
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GXV160H2 (HRJ216K3 TWNH)',
         brand: 'Honda',
@@ -1883,7 +2136,13 @@ async function main() {
           accessories: [],
           warranty: null, // No especificado
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX390T2',
         brand: 'Honda',
@@ -1925,7 +2184,13 @@ async function main() {
           oilCapacityCc: 1100,
           oilAlertSystem: 'No',
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
+
       {
         title: 'Motor GX35T',
         brand: 'Honda',
@@ -1958,6 +2223,11 @@ async function main() {
             maxSprayPressureBar: 1, // presión/pulverización máxima
           },
         },
+        stock: {
+          Piura: Math.floor(Math.random() * 100),
+          Sullana: Math.floor(Math.random() * 100),
+          Tambogrande: Math.floor(Math.random() * 100),
+        }
       },
     ],
   });
