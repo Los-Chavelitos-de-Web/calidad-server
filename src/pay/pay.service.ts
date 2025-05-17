@@ -2,9 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { ProductPay } from '../../src/models/Product';
 import { PrismaService } from '../../src/prisma.service';
-import { factura } from 'src/utils/genFacturas';
-import { ClienteType } from 'src/types/facturas';
-import { sendPaySuccess } from 'src/utils/sendMail';
+import { factura } from '../../src/utils/genFacturas';
+import { ClienteType } from '../../src/types/facturas';
+import { sendPaySuccess } from '../../src/utils/sendMail';
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_API_KEY || '',
