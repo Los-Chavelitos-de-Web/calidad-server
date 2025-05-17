@@ -13,43 +13,44 @@ model User {
   name      String   @db.VarChar(100)
   email     String   @unique @db.VarChar(100)
   password  String   @db.VarChar(100)
-  role      Role     @default(CUSTOMER)
+  role      Role     @default(CLIENTE)
   createdAt DateTime @default(now())
   sales     Sale[]
 }
 
 model Product {
-  id             Int       @id @default(autoincrement())
-  title          String    @db.VarChar(100)
-  description    String?   @db.Text
-  specifications Json?     // Specs técnicas en formato clave/valor
-  manualUrl      String?   @db.Text
+  id             Int        @id @default(autoincrement())
+  title          String     @db.VarChar(100)
+  description    String?    @db.Text
+  specifications Json? // Specs técnicas en formato clave/valor
+  manualUrl      String?    @db.Text
   price          Float
   stock          Int
-  createdAt      DateTime  @default(now())
+  createdAt      DateTime   @default(now())
   sales          SaleItem[]
 }
 
 model Sale {
-  id         Int       @id @default(autoincrement())
-  user       User      @relation(fields: [userId], references: [id])
-  userId     Int
-  createdAt  DateTime  @default(now())
-  total      Float
-  items      SaleItem[]
+  id        Int        @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime   @default(now())
+  total     Float
+  items     SaleItem[]
 }
 
 model SaleItem {
-  id           Int     @id @default(autoincrement())
-  sale         Sale    @relation(fields: [saleId], references: [id])
-  saleId       Int
-  product      Product @relation(fields: [productId], references: [id])
-  productId    Int
-  quantity     Int
-  unitPrice    Float
+  id        Int     @id @default(autoincrement())
+  sale      Sale    @relation(fields: [saleId], references: [id])
+  saleId    Int
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
+  unitPrice Float
 }
 
 enum Role {
-  ADMIN
-  CUSTOMER
+  GERENTE
+  ALMACEN_VENTAS
+  CLIENTE
 }
