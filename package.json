@@ -29,6 +29,7 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/swagger": "^11.2.0",
     "airclock-server": "link:",
     "bcryptjs": "^3.0.2",
     "class-transform": "^0.7.0",
