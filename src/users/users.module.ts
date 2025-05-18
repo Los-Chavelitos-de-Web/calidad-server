@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../../src/prisma.service';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -14,10 +14,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
         expiresIn: configService.get('JWT_EXPIRES_IN') || '60s'
-    }),
+      }),
     }),
   ],
   providers: [UsersService, PrismaService],
   controllers: [UsersController]
 })
-export class UsersModule {}
+export class UsersModule { }
