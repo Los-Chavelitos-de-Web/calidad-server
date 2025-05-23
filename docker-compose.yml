@@ -1,0 +1,38 @@
+
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_calidad
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: calidad_db
+      MYSQL_USER: calidad_db
+      MYSQL_PASSWORD: calidad_db
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  airclock-server:
+    build: .
+    container_name: calidad-server
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: mysql://calidad_db:calidad_db@mysql:3306/calidad_db
+    ports:
+      - '3000:3000'
+    command: >
+      sh -c "
+        until npx prisma migrate deploy; do sleep 2; done &&
+        node dist/prisma/seed.js &&
+        node dist/main
+      "
+
+
+volumes:
+  mysql_data:
