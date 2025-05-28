@@ -60,6 +60,11 @@ export class ProductsController {
     }
   }
 
+  /**
+   * Elimina un producto en la base de datos
+   * @param id Identificador del producto
+   * @returns Un mensaje de satisfaccion por parte de prisma o de error
+   */
   @Delete('delete')
   @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
