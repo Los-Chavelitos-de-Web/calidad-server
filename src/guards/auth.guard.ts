@@ -33,7 +33,10 @@ export class AuthGuard implements CanActivate {
 
       return true;
     } catch (err) {
-      throw new UnauthorizedException('Token inválido o expirado.');
+      throw new UnauthorizedException({
+        message: 'Token inválido o expirado.',
+        error: err
+      });
     }
   }
 }

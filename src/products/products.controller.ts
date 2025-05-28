@@ -1,7 +1,17 @@
-import { Body, Controller, Delete, Get, NotFoundException, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { ProductCreate, ProductUpdate } from 'src/models/Product';
+import { AuthGuard } from '../guards/auth.guard';
 
 @ApiTags('Products') // Categoría para agrupar los endpoints relacionados con productos
 @Controller('products')
@@ -13,8 +23,12 @@ export class ProductsController {
    * @returns toda la lista de productos
    */
   @Get('getAll')
+  @UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Obtener todos los productos' }) // Descripción breve del endpoint
-  @ApiResponse({ status: 200, description: 'Lista de productos obtenida exitosamente.' }) // Respuesta esperada
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de productos obtenida exitosamente.',
+  }) // Respuesta esperada
   @ApiResponse({ status: 500, description: 'Error interno del servidor.' }) // Respuesta en caso de error
   getAllProducts() {
     return this.prodService.getProducts();
@@ -26,6 +40,7 @@ export class ProductsController {
    * @returns Un mensaje de satisfaccion
    */
   @Post('create')
+  @UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Crear un nuevo producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Crea un nuevo producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al crear el producto.' }) // Respuesta en caso de error
@@ -35,7 +50,7 @@ export class ProductsController {
     } catch (error) {
       throw new NotFoundException({
         status: 400,
-        message: `Error al crear el producto: ${error}`
+        message: `Error al crear el producto: ${error}`,
       });
     }
   }
@@ -46,6 +61,7 @@ export class ProductsController {
    * @returns Mensaje satisfactorio/error
    */
   @Put('update')
+  @UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Actualiza el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Actualiza un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al actualizar el producto.' }) // Respuesta en caso de error
@@ -55,7 +71,7 @@ export class ProductsController {
     } catch (error) {
       throw new NotFoundException({
         status: 400,
-        message: `Error al actualizar el producto: ${error}`
+        message: `Error al actualizar el producto: ${error}`,
       });
     }
   }
@@ -66,6 +82,7 @@ export class ProductsController {
    * @returns Un mensaje de satisfaccion por parte de prisma o de error
    */
   @Delete('delete')
+  @UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al eliminar el producto.' }) // Respuesta en caso de error
@@ -75,7 +92,7 @@ export class ProductsController {
     } catch (error) {
       throw new NotFoundException({
         status: 400,
-        message: `Error al eliminar el producto: ${error}`
+        message: `Error al eliminar el producto: ${error}`,
       });
     }
   }
