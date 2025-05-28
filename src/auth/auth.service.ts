@@ -15,14 +15,14 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly jwtConfig: JWTConfig,
-  ) { }
+  ) {}
 
   async register(user: UserRegister) {
     try {
-      const r = await this.prisma.user.create({ data: user });
+      await this.prisma.user.create({ data: user });
       return {
+        status: 200,
         message: 'User created successfully',
-        data: r,
       };
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -30,6 +30,12 @@ export class AuthService {
         throw new NotFoundException({
           message: 'Error creating user',
           error: error.meta,
+        });
+      } else if (error instanceof Prisma.PrismaClientValidationError) {
+        // Error desconocido de Prisma
+        throw new NotFoundException({
+          message: 'Error al validar los campos recibidos',
+          data: user,
         });
       } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
         // Error desconocido de Prisma
