@@ -23,7 +23,6 @@ export class ProductsController {
    * @returns toda la lista de productos
    */
   @Get('getAll')
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Obtener todos los productos' }) // Descripción breve del endpoint
   @ApiResponse({
     status: 200,
@@ -86,9 +85,14 @@ export class ProductsController {
   @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al eliminar el producto.' }) // Respuesta en caso de error
-  async deleteProduct(@Body() id: number) {
+  async deleteProduct(@Body() req: { id: number }) {
     try {
-      return await this.prodService.deleteProduct(id);
+      await this.prodService.deleteProduct(req.id);
+
+      return {
+        res: 'ok',
+        message: `Producto ${req.id} eliminado correctamente`
+      }
     } catch (error) {
       throw new NotFoundException({
         status: 400,
