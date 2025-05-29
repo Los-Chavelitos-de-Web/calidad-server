@@ -13,8 +13,9 @@ jobs:
       image: node:20
     steps:
       - uses: actions/checkout@v3
+      - run: npm install -g pnpm@latest-10
       - run: echo "DATABASE_URL=${{ vars.DATABASE_URL }}" >> .env  # Save secret to .env file
-      - run: npm ci
-      - run: npm run prisma:migrate
-      - run: npm run prisma:seed
-      - run: npm run test
+      - run: pnpm ci
+      - run: pnpm run prisma:migrate
+      - run: pnpm run prisma:seed
+      - run: pnpm run test
