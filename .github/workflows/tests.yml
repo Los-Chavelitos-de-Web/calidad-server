@@ -11,10 +11,10 @@ jobs:
     container:
       image: node:20
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }} # 👈 Add this here
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v3
-        with:
-          node-version: 20
+      - run: echo DATABASE_URL
       - run: npm i
+      - run: echo DATABASE_URL=${{ secrets.DATABASE_URL }} > .env
       - run: npm run test
