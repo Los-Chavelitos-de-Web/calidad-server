@@ -8,15 +8,30 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: development  # Specify the environment where secrets are stored
+    environment: development
     container:
       image: node:20
+    services:
+      postgres:
+        image: postgres:15  # Use the official PostgreSQL Docker image
+        env:
+          POSTGRES_USER: postgres  # Username
+          POSTGRES_PASSWORD: password  # Password
+          POSTGRES_DB: testdb  # Database name
+        ports:
+          - 5432:5432  # Expose port for PostgreSQL
+        options: >-
+          --health-cmd="pg_isready -U postgres"  # Wait until PostgreSQL is ready
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - uses: actions/checkout@v3
       - run: npm install -g pnpm@latest-10
-      - run: echo "DATABASE_URL=${{ vars.DATABASE_URL }}" >> .env  # Save secret to .env file
-      - run: pnpm i
-      - run: rm -rf prisma/migrations
-      - run: pnpm run prisma:migrate
-      - run: pnpm run prisma:seed
-      - run: pnpm run test
+      - run: echo "DATABASE_URL=postgresql://postgres:password@localhost:5432/testdb" >> .env  # Set DB URL in .env file
+      - run: pnpm install
+      - run: rm -rf prisma/migrations  # Clean up old migrations if any
+      - run: pnpm run prisma:migrate  # Run Prisma migrations
+      - run: pnpm run prisma:seed  # Seed the database if necessary
+      - run: pnpm run test  # Run your tests
