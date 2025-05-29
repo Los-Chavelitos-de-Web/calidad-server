@@ -3,6 +3,7 @@ import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 import { PrismaService } from '../prisma.service';
 import { PrismaClient } from '@prisma/client';
+import { JwtService } from '@nestjs/jwt';
 
 describe('ProductsController', () => {
   let controller: ProductsController;
@@ -20,7 +21,7 @@ describe('ProductsController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ProductsController],
-      providers: [ProductsService, PrismaService],
+      providers: [ProductsService, PrismaService, JwtService],
     }).compile();
 
     controller = module.get<ProductsController>(ProductsController);

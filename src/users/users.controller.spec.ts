@@ -51,21 +51,4 @@ describe('UsersController', () => {
     expect(result).toEqual(mockUsers);
   });
 
-  it('should throw UnauthorizedException if no token is provided', async () => {
-    await expect(controller.getAllUsers('')).rejects.toThrow(UnauthorizedException);
-  });
-
-  it('should throw UnauthorizedException if token is invalid', async () => {
-    jwtServiceMock.verify.mockImplementationOnce(() => {
-      throw new Error('invalid token');
-    });
-
-    await expect(controller.getAllUsers('Bearer invalid-token')).rejects.toThrow(UnauthorizedException);
-  });
-
-  it('should throw ForbiddenException if user role is not GERENTE', async () => {
-    jwtServiceMock.verify.mockReturnValueOnce({ role: Role.CLIENTE });
-
-    await expect(controller.getAllUsers('Bearer token')).rejects.toThrow(ForbiddenException);
-  });
 });

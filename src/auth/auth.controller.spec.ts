@@ -1,4 +1,3 @@
-
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
@@ -7,7 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import { JWTConfig } from '../utils/jwt';
 import { UnauthorizedException } from '@nestjs/common';
 import * as bcryptUtils from '../utils/bcrypt';
-import { Role } from '../../prisma/generated';
+import { Role } from '@prisma/client';
 
 describe('Auth Module', () => {
   let authService: AuthService;
@@ -62,34 +61,64 @@ describe('Auth Module', () => {
         const result = await authService.register(user);
 
         expect(prismaMock.user.create).toHaveBeenCalledWith({ data: user });
-        expect(result).toEqual({ message: 'User created successfully', data: user });
+        expect(result).toEqual({
+          status: 200,
+          message: 'User created successfully',
+        });
       });
     });
     describe('login', () => {
       it('should return token on successful login', async () => {
-        const mockUser = { id: 1, email: 'test@example.com', password: 'hashedpass', name: 'Test', role: Role.CLIENTE };
+        const mockUser = {
+          id: 1,
+          email: 'test@example.com',
+          password: 'hashedpass',
+          name: 'Test',
+          role: Role.CLIENTE,
+        };
         (prismaMock.user.findUnique as jest.Mock).mockResolvedValue(mockUser);
 
         jest.spyOn(bcryptUtils, 'comparePassword').mockResolvedValue(true);
 
-        const result = await authService.login({ email: 'test@example.com', password: 'plainpass' });
+        const result = await authService.login({
+          email: 'test@example.com',
+          password: 'plainpass',
+        });
 
-        expect(prismaMock.user.findUnique).toHaveBeenCalledWith({ where: { email: 'test@example.com' } });
+        expect(prismaMock.user.findUnique).toHaveBeenCalledWith({
+          where: { email: 'test@example.com' },
+        });
         expect(result).toEqual({ token: 'fake-jwt-token' });
       });
 
       it('should throw UnauthorizedException if user not found', async () => {
         (prismaMock.user.findUnique as jest.Mock).mockResolvedValue(null);
 
-        await expect(authService.login({ email: 'notfound@example.com', password: 'pass' })).rejects.toThrow(UnauthorizedException);
+        await expect(
+          authService.login({
+            email: 'notfound@example.com',
+            password: 'pass',
+          }),
+        ).rejects.toThrow(UnauthorizedException);
       });
 
       it('should throw UnauthorizedException if password incorrect', async () => {
-        const mockUser = { id: 1, email: 'test@example.com', password: 'hashedpass', name: 'Test', role: Role.CLIENTE };
+        const mockUser = {
+          id: 1,
+          email: 'test@example.com',
+          password: 'hashedpass',
+          name: 'Test',
+          role: Role.CLIENTE,
+        };
         (prismaMock.user.findUnique as jest.Mock).mockResolvedValue(mockUser);
         jest.spyOn(bcryptUtils, 'comparePassword').mockResolvedValue(false);
 
-        await expect(authService.login({ email: 'test@example.com', password: 'wrongpass' })).rejects.toThrow(UnauthorizedException);
+        await expect(
+          authService.login({
+            email: 'test@example.com',
+            password: 'wrongpass',
+          }),
+        ).rejects.toThrow(UnauthorizedException);
       });
     });
   });
@@ -98,7 +127,6 @@ describe('Auth Module', () => {
   describe('AuthController', () => {
     describe('register', () => {
       it('should hash password and call service.register', async () => {
-
         const now = new Date();
 
         const user = {
@@ -110,17 +138,20 @@ describe('Auth Module', () => {
 
         jest.spyOn(bcryptUtils, 'genHash').mockResolvedValue('hashedPassword');
         jest.spyOn(authService, 'register').mockResolvedValue({
+          status: 200,
           message: 'User created successfully',
-          data: { id: 0, role: Role.CLIENTE, createdAt: now, ...user, password: 'hashedPassword' },
         });
 
         const result = await authController.register(user);
 
         expect(bcryptUtils.genHash).toHaveBeenCalledWith('contraseñaSegura');
-        expect(authService.register).toHaveBeenCalledWith({ ...user, password: 'hashedPassword' });
+        expect(authService.register).toHaveBeenCalledWith({
+          ...user,
+          password: 'hashedPassword',
+        });
         expect(result).toEqual({
+          status: 200,
           message: 'User created successfully',
-          data: { id: 0, role: Role.CLIENTE, createdAt: now, ...user, password: 'hashedPassword' },
         });
       });
     });

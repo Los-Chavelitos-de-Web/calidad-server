@@ -10,8 +10,8 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
-import { ProductCreate, ProductUpdate } from 'src/models/Product';
-import { AuthGuard } from '../guards/auth.guard';
+import { ProductCreate, ProductUpdate } from '../../src/models/Product';
+import { AuthGuard } from '../guards/auth/auth.guard';
 
 @ApiTags('Products') // Categoría para agrupar los endpoints relacionados con productos
 @Controller('products')
