@@ -16,6 +16,7 @@ jobs:
       - run: npm install -g pnpm@latest-10
       - run: echo "DATABASE_URL=${{ vars.DATABASE_URL }}" >> .env  # Save secret to .env file
       - run: pnpm i
+      - run: rm -rf prisma/migrations
       - run: pnpm run prisma:migrate
       - run: pnpm run prisma:seed
       - run: pnpm run test
