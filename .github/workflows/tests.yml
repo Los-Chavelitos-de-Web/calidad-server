@@ -19,12 +19,7 @@ jobs:
           POSTGRES_PASSWORD: password
           POSTGRES_DB: testdb
         ports:
-          - 5432:5432  # Expose the PostgreSQL port
-        options: >-
-          # --health-cmd="pg_isready -U postgres -d testdb"  # Wait for PostgreSQL to be ready and ensure the testdb is available
-          # --health-interval=10s
-          # --health-timeout=5s
-          # --health-retries=5
+          - 5432:5432
 
     steps:
       - uses: actions/checkout@v3
