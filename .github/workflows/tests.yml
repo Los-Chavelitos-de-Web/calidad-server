@@ -8,11 +8,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: production  # Specify the environment where secrets are stored
+    environment: development  # Specify the environment where secrets are stored
     container:
       image: node:20
     steps:
       - uses: actions/checkout@v3
-      - run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}"  # Debugging step
       - run: npm i
+      - run: npm run prisma:migrate
+      - run: npm run prisma:seed
       - run: npm run test
