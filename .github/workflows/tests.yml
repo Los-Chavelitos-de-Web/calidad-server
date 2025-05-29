@@ -13,7 +13,7 @@ jobs:
       image: node:20
     steps:
       - uses: actions/checkout@v3
-      - run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env  # Save secret to .env file
+      - run: echo "DATABASE_URL=${{ vars.DATABASE_URL }}" >> .env  # Save secret to .env file
       - run: printenv
       - run: cat .env  # Debugging: Check if DATABASE_URL is written to .env
       - run: npm i
