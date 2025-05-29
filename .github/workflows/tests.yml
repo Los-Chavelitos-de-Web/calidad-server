@@ -13,15 +13,15 @@ jobs:
       image: node:20
     services:
       postgres:
-        image: postgres:15  # Use the official PostgreSQL Docker image
+        image: postgres:15  # PostgreSQL container image
         env:
-          POSTGRES_USER: postgres  # Username
-          POSTGRES_PASSWORD: password  # Password
-          POSTGRES_DB: testdb  # Database name
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
         ports:
-          - 5432:5432  # Expose port for PostgreSQL
+          - 5432:5432  # Expose the PostgreSQL port
         options: >-
-          --health-cmd="pg_isready -U postgres"  # Wait until PostgreSQL is ready
+          --health-cmd="pg_isready -U postgres -d testdb"  # Wait for PostgreSQL to be ready and ensure the testdb is available
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -29,9 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm install -g pnpm@latest-10
-      - run: echo "DATABASE_URL=postgresql://postgres:password@localhost:5432/testdb" >> .env  # Set DB URL in .env file
-      - run: pnpm install
-      - run: rm -rf prisma/migrations  # Clean up old migrations if any
-      - run: pnpm run prisma:migrate  # Run Prisma migrations
-      - run: pnpm run prisma:seed  # Seed the database if necessary
-      - run: pnpm run test  # Run your tests
+      - run: echo "DATABASE_URL=postgresql://postgres:password@postgres:5432/testdb" >> .env  # Use the service name 'postgres' for the DB URL
+      - run: pnpm install  # Install dependencies using pnpm
+      - run: rm -rf prisma/migrations  # Clean migrations if necessary
+      - run: pnpm run prisma:migrate  # Run migrations
+      - run: pnpm run prisma:seed  # Seed the database
+      - run: pnpm run test  # Run tests
