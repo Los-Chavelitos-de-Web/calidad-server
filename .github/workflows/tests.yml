@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "DATABASE_URL=${{ vars.DATABASE_URL }}" >> .env  # Save secret to .env file
-      - run: npm i
+      - run: npm ci
       - run: npm run prisma:migrate
       - run: npm run prisma:seed
       - run: npm run test
