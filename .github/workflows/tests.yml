@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:20
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }} # 👈 Add this here
     steps:
       - uses: actions/checkout@v3
         with:
           node-version: 20
       - run: npm i
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - run: npm run test
