@@ -10,16 +10,16 @@ datasource db {
 model Product {
   id           Int      @id @default(autoincrement())
   title        String
-  brand        String
-  model        String?
-  category     String
-  manufacturer String?
   description  String?  @db.VarChar(1500)
-  specs        Json?
-  manualUrl    String?
+  brand        String
   price        Float?
   stock        Json
   createdAt    DateTime @default(now())
+  model        String?
+  category     String
+  manufacturer String?
+  specs        Json?
+  manualUrl    String?
 }
 
 model User {
