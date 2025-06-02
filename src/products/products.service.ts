@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { ProductCreate, ProductUpdate } from '../../src/models/Product';
 import { Prisma } from '@prisma/client';
+import { describe } from '../../src/utils/getPrompt';
 
 @Injectable()
 export class ProductsService {
@@ -11,12 +12,40 @@ export class ProductsService {
     return this.prisma.product.findMany();
   }
 
-  getOneProduct(id: number) {
-    return this.prisma.product.findFirst({
+  async getOneProduct(id: number) {
+    const prod_all = await this.prisma.product.findFirst({
       where: {
         id,
       },
     });
+
+    const prod_select = await this.prisma.product.findFirst({
+      where: {
+        id,
+      },
+      select: {
+        title: true,
+        brand: true,
+        model: true,
+        category: true,
+        specs: true,
+      },
+    });
+
+    const prod_prompt = {
+      title: prod_select?.title,
+      brand: prod_select?.brand,
+      model: prod_select?.model,
+      category: prod_select?.category,
+      specs: prod_select?.specs,
+    };
+
+    const desc = await describe(prod_prompt);
+
+    return {
+      ...prod_all,
+      description: desc
+    };
   }
 
   createProduct(p: ProductCreate) {
