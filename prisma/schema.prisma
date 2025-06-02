@@ -20,17 +20,25 @@ model Product {
   manufacturer String?
   specs        Json?
   manualUrl    String?
+  isActive     Boolean  @default(true)
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(50)
-  email     String   @unique
-  dni       String
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
   password  String
-  role      Role     @default(CLIENTE)
-  createdAt DateTime @default(now())
+  role      Role      @default(CLIENTE)
+  createdAt DateTime  @default(now())
   sales     Sale[]
+  Reserva   Reserva[]
+  Profile   Profile[]
+}
+
+model Profile {
+  user_id Int    @id
+  user    User   @relation(fields: [user_id], references: [id])
+  dni     String
+  name    String @db.VarChar(50)
 }
 
 model Sale {
@@ -38,7 +46,7 @@ model Sale {
   userId    Int
   createdAt DateTime   @default(now())
   total     Float
-  status    String
+  status    Status     @default(PENDIENTE)
   user      User       @relation(fields: [userId], references: [id])
   SaleItem  SaleItem[]
 }
@@ -54,6 +62,34 @@ model SaleItem {
   codigo_sunat    String
   codigo_unidad   String
   tipo_igv_codigo String
+}
+
+model Reserva {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  status    Status   @default(PENDIENTE)
+  total     Float
+  notes     String?  @db.VarChar(1000)
+
+  ReservaItem ReservaItem[]
+}
+
+model ReservaItem {
+  id              Int     @id @default(autoincrement())
+  reservaId       Int
+  Reserva         Reserva @relation(fields: [reservaId], references: [id])
+  producto        String
+  cantidad        Int
+  precio_base     Float
+  codigo_producto String
+}
+
+enum Status {
+  PENDIENTE
+  CANCELADA
+  CONFIRMADA
 }
 
 enum Role {
