@@ -67,13 +67,12 @@ model SaleItem {
 model Reserva {
   id        Int      @id @default(autoincrement())
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  total     Float
   createdAt DateTime @default(now())
   status    Status   @default(PENDIENTE)
-  total     Float
   notes     String?  @db.VarChar(1000)
-
   ReservaItem ReservaItem[]
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model ReservaItem {

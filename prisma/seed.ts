@@ -75,7 +75,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -127,7 +127,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -178,7 +178,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -222,7 +222,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -276,7 +276,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -330,7 +330,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -370,7 +370,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -399,7 +399,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -451,7 +451,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -501,7 +501,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -547,7 +547,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -593,7 +593,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -633,7 +633,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -673,7 +673,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -755,7 +755,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -789,8 +789,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
-
+        },
       },
 
       {
@@ -832,7 +831,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -875,7 +874,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -913,7 +912,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -960,7 +959,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1007,7 +1006,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1054,7 +1053,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1100,7 +1099,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1141,7 +1140,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1200,7 +1199,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1264,7 +1263,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1327,7 +1326,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1394,7 +1393,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1443,7 +1442,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1492,7 +1491,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1543,7 +1542,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1592,7 +1591,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1641,7 +1640,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1690,7 +1689,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1739,7 +1738,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1788,7 +1787,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1837,7 +1836,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1886,7 +1885,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1935,7 +1934,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -1984,7 +1983,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -2033,7 +2032,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -2082,7 +2081,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -2140,7 +2139,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -2188,7 +2187,7 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
       },
 
       {
@@ -2227,7 +2226,116 @@ async function main() {
           Piura: Math.floor(Math.random() * 100),
           Sullana: Math.floor(Math.random() * 100),
           Tambogrande: Math.floor(Math.random() * 100),
-        }
+        },
+      },
+    ],
+  });
+
+  // Seeds para Sale
+  await prisma.sale.createMany({
+    data: [
+      {
+        id: 'S001',
+        userId: 1,
+        total: 120.5,
+        status: 'PENDIENTE',
+      },
+      {
+        id: 'S002',
+        userId: 2,
+        total: 350.75,
+        status: 'CONFIRMADA',
+      },
+      {
+        id: 'S003',
+        userId: 3,
+        total: 89.99,
+        status: 'CANCELADA',
+      },
+    ],
+  });
+
+  await prisma.saleItem.createMany({
+    data: [
+      {
+        saleId: 'S001',
+        producto: 'Monitor LED 24"',
+        cantidad: '1',
+        precio_base: '120.5',
+        codigo_producto: 'PRD001',
+        codigo_sunat: 'ELEC001',
+        codigo_unidad: 'NIU',
+        tipo_igv_codigo: '10',
+      },
+      {
+        saleId: 'S002',
+        producto: 'Laptop Gamer XYZ',
+        cantidad: '1',
+        precio_base: '350.75',
+        codigo_producto: 'PRD002',
+        codigo_sunat: 'ELEC002',
+        codigo_unidad: 'NIU',
+        tipo_igv_codigo: '10',
+      },
+      {
+        saleId: 'S003',
+        producto: 'Teclado Mecánico',
+        cantidad: '2',
+        precio_base: '44.995',
+        codigo_producto: 'PRD003',
+        codigo_sunat: 'ELEC003',
+        codigo_unidad: 'NIU',
+        tipo_igv_codigo: '10',
+      },
+    ],
+  });
+
+  // Seeds para Reserva
+  await prisma.reserva.createMany({
+    data: [
+      {
+        userId: 1,
+        total: 200,
+        status: 'PENDIENTE',
+        notes: 'Cliente recogerá el producto en tienda.',
+      },
+      {
+        userId: 2,
+        total: 600.5,
+        status: 'CONFIRMADA',
+        notes: 'Entrega a domicilio programada.',
+      },
+      {
+        userId: 3,
+        total: 150.25,
+        status: 'CANCELADA',
+        notes: 'El cliente canceló por falta de stock.',
+      },
+    ],
+  });
+
+  await prisma.reservaItem.createMany({
+    data: [
+      {
+        reservaId: 1,
+        producto: 'Mouse Inalámbrico',
+        cantidad: 2,
+        precio_base: 100,
+        codigo_producto: 'PRD004',
+      },
+      {
+        reservaId: 2,
+        producto: 'Impresora Multifunción',
+        cantidad: 1,
+        precio_base: 600.5,
+        codigo_producto: 'PRD005',
+      },
+      {
+        reservaId: 3,
+        producto: 'Router WiFi 6',
+        cantidad: 1,
+        precio_base: 150.25,
+        codigo_producto: 'PRD006',
       },
     ],
   });
