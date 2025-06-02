@@ -8,11 +8,12 @@ import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { PayModule } from './pay/pay.module';
 import { DescribeModule } from './describe/describe.module';
+import { SalesModule } from './sales/sales.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-  }), ProductsModule, AuthModule, UsersModule, JwtModule, PayModule, DescribeModule],
+  }), ProductsModule, AuthModule, UsersModule, JwtModule, PayModule, DescribeModule, SalesModule],
   controllers: [AppController],
   providers: [AppService],
 })
