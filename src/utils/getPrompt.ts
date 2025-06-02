@@ -62,7 +62,7 @@ export async function describe(
       throw new NotFoundException({ message: 'No se pudo cargar el recurso.' });
     }
 
-    return response.body.choices?.[0]?.message?.content ?? '';
+    return response.body.choices?.[0]?.message?.content ?? 'No description available.';
   } catch (error) {
     throw new NotFoundException({
       message: 'No se pudo cargar el recurso.',
