@@ -1,7 +1,7 @@
 import { Controller, Get, NotFoundException, Param, UseGuards } from '@nestjs/common';
 import { ReservasService } from './reservas.service';
-import { AuthGuard } from 'src/guards/auth/auth.guard';
-import { ApiBearerAuth, ApiHeader, ApiOperation, ApiResponse } from 'node_modules/@nestjs/swagger/dist';
+import { AuthGuard } from '../../src/guards/auth/auth.guard';
+import { ApiBearerAuth, ApiHeader, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('reservas')
 export class ReservasController {

@@ -1,7 +1,7 @@
 import { Controller, Get, NotFoundException, Param, UseGuards } from '@nestjs/common';
 import { SalesService } from './sales.service';
-import { AuthGuard } from 'src/guards/auth/auth.guard';
-import { ApiBearerAuth, ApiHeader, ApiOperation, ApiResponse } from 'node_modules/@nestjs/swagger/dist';
+import { AuthGuard } from '../../src/guards/auth/auth.guard';
+import { ApiBearerAuth, ApiHeader, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('sales')
 export class SalesController {
