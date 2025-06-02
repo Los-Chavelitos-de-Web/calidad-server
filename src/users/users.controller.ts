@@ -6,7 +6,7 @@ import {
   ForbiddenException,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiHeader } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { AuthGuard } from '../guards/auth/auth.guard';
 
@@ -17,6 +17,7 @@ export class UsersController {
 
   @Get('getAll')
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Obtener todos los usuarios' }) // Descripción breve del endpoint
   @ApiHeader({
     name: 'Authorization',
