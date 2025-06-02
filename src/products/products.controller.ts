@@ -4,11 +4,12 @@ import {
   Delete,
   Get,
   NotFoundException,
+  Param,
   Post,
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { ProductCreate, ProductUpdate } from '../../src/models/Product';
 import { AuthGuard } from '../guards/auth/auth.guard';
@@ -33,6 +34,25 @@ export class ProductsController {
     return this.prodService.getProducts();
   }
 
+  @Get('/:id')
+  @ApiOperation({ summary: 'Obtener un producto individual' }) // Descripción breve del endpoint
+  @ApiResponse({
+    status: 200,
+    description: 'Producto obtenido exitosamente.',
+  }) // Respuesta esperada
+  @ApiResponse({ status: 500, description: 'Error interno del servidor.' }) // Respuesta en caso de error
+  async getOneProducts(@Param('id') id: string) {
+    const producto = await this.prodService.getOneProduct(parseInt(id));
+
+    if (!producto) {
+      throw new NotFoundException({
+        status: 400,
+        message: `No existe el producto ID: [${id}]`,
+      });
+    }
+    return this.prodService.getOneProduct(parseInt(id));
+  }
+
   /**
    * Endpoint para crear los productos
    * @param p Producto nuevo a agregar
@@ -40,6 +60,7 @@ export class ProductsController {
    */
   @Post('create')
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Crear un nuevo producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Crea un nuevo producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al crear el producto.' }) // Respuesta en caso de error
@@ -59,14 +80,15 @@ export class ProductsController {
    * @param p Producto a actualizar
    * @returns Mensaje satisfactorio/error
    */
-  @Put('update')
+  @Put('update/:id')
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Actualiza el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Actualiza un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al actualizar el producto.' }) // Respuesta en caso de error
-  async updateProduct(@Body() p: ProductUpdate) {
+  async updateProduct(@Param('id') id: string, @Body() p: ProductUpdate) {
     try {
-      return await this.prodService.updateProduct(p.id, p);
+      return await this.prodService.updateProduct(parseInt(id), p);
     } catch (error) {
       throw new NotFoundException({
         status: 400,
@@ -82,6 +104,7 @@ export class ProductsController {
    */
   @Delete('delete')
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al eliminar el producto.' }) // Respuesta en caso de error
@@ -91,8 +114,8 @@ export class ProductsController {
 
       return {
         res: 'ok',
-        message: `Producto ${req.id} eliminado correctamente`
-      }
+        message: `Producto ${req.id} eliminado correctamente`,
+      };
     } catch (error) {
       throw new NotFoundException({
         status: 400,

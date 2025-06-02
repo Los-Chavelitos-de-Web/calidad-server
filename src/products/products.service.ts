@@ -11,6 +11,14 @@ export class ProductsService {
     return this.prisma.product.findMany();
   }
 
+  getOneProduct(id: number) {
+    return this.prisma.product.findFirst({
+      where: {
+        id,
+      },
+    });
+  }
+
   createProduct(p: ProductCreate) {
     const data: Prisma.ProductCreateInput = {
       title: p.title,
@@ -35,14 +43,16 @@ export class ProductsService {
       ...(p.description && { description: p.description }),
       ...(p.brand && { brand: p.brand }),
       ...(typeof p.price === 'number' && { price: p.price }),
-      ...(typeof p.stock === 'number' && { stock: p.stock }),
+      ...(p.stock && { stock: p.stock }),
       ...(p.createdAt && { createdAt: p.createdAt }),
       ...(p.model && { model: p.model }),
       ...(p.category && { category: p.category }),
       ...(p.manufacturer && { manufacturer: p.manufacturer }),
       ...(p.manualUrl && { manualUrl: p.manualUrl }),
       ...(p.specs && { specs: p.specs }),
+      ...(typeof p.isActive === 'boolean' && { isActive: p.isActive }),
     };
+    console.log(data);
 
     return this.prisma.product.update({
       where: { id },
