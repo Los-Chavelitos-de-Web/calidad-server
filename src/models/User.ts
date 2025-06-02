@@ -1,8 +1,14 @@
-import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger'; // Importar ApiProperty
 import { Role } from '@prisma/client';
 
-export class UserRegister {
+export class User {
+
+  @ApiProperty({ description: 'Id del usuario' })
+  @IsNumber()
+  @IsNotEmpty()
+  id?: number = 0;
+
   @ApiProperty({ description: 'Nombre del usuario', minLength: 3, maxLength: 50 })
   @IsString()
   @IsNotEmpty()

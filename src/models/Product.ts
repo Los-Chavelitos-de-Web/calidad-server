@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, MinLength } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, MinLength } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger"; // Importar ApiProperty
 
 
@@ -133,6 +133,11 @@ export class ProductUpdate {
   @IsOptional()
   @IsObject()
   specs?: Record<string, any>;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class ProductPay {
