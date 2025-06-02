@@ -44,7 +44,7 @@ export class ProductsService {
 
     return {
       ...prod_all,
-      description: desc
+      description: desc,
     };
   }
 
@@ -81,7 +81,6 @@ export class ProductsService {
       ...(p.specs && { specs: p.specs }),
       ...(typeof p.isActive === 'boolean' && { isActive: p.isActive }),
     };
-    console.log(data);
 
     return this.prisma.product.update({
       where: { id },
