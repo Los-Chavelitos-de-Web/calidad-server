@@ -2231,6 +2231,24 @@ async function main() {
     ],
   });
 
+  // Seeds para User
+  await prisma.user.create({
+    data: {
+      id: 1,
+      email: 'pancito@canela.de',
+      password: 'lacontraseñamasdificildelmundo',
+    }
+  });
+
+  // Seeds para Profile
+  await prisma.profile.create({
+    data: {
+      user_id: 1,
+      dni: '12345678',
+      name: 'Pancito de canela',
+    }
+  });
+
   // Seeds para Sale
   await prisma.sale.createMany({
     data: [
@@ -2242,13 +2260,13 @@ async function main() {
       },
       {
         id: 'S002',
-        userId: 2,
+        userId: 1,
         total: 350.75,
         status: 'CONFIRMADA',
       },
       {
         id: 'S003',
-        userId: 3,
+        userId: 1,
         total: 89.99,
         status: 'CANCELADA',
       },
@@ -2300,13 +2318,13 @@ async function main() {
         notes: 'Cliente recogerá el producto en tienda.',
       },
       {
-        userId: 2,
+        userId: 1,
         total: 600.5,
         status: 'CONFIRMADA',
         notes: 'Entrega a domicilio programada.',
       },
       {
-        userId: 3,
+        userId: 1,
         total: 150.25,
         status: 'CANCELADA',
         notes: 'El cliente canceló por falta de stock.',
