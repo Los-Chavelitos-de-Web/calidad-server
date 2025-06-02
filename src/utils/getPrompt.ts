@@ -1,42 +1,72 @@
-import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
-import { AzureKeyCredential } from "@azure/core-auth";
-import { ProductPromptType } from "../../src/types/promptTypes";
+import ModelClient, { isUnexpected } from '@azure-rest/ai-inference';
+import { AzureKeyCredential } from '@azure/core-auth';
+import { ProductPromptType } from '../../src/types/promptTypes';
+import { NotFoundException } from '@nestjs/common';
 
 const token = process.env.GITHUB_TOKEN || '';
-const endpoint = "https://models.github.ai/inference";
-const modelName = "meta/Llama-3.2-11B-Vision-Instruct";
+const endpoint = 'https://models.github.ai/inference';
+const modelName = 'meta/Llama-3.2-11B-Vision-Instruct';
 
-export async function describe(product: ProductPromptType) {
-
-  const client = ModelClient(
-    endpoint,
-    new AzureKeyCredential(token),
-  );
-
-  const productFormated = () => {
-    return `title: ${product.title}, brand: ${product.brand}, model: ${product.model}, category: ${product.category}, specs: ${Object.entries(product.specs).map(([key, value]) => `${key}: ${value}`).join(', ')}`;
+// Función para formatear el producto en texto plano
+function formatProductPrompt(product: ProductPromptType): string {
+  if (!product.specs) {
+    throw new NotFoundException({ message: 'Specs field is not defined.' });
   }
 
-  const response = await client.path("/chat/completions").post({
-    body: {
-      messages: [
-        {
-          role: "system", content: "You are a helpful what describe machines and always return in prose and in Spanish language.\
-          Use UTF-8. With understandable words and text plain" },
-        { role: "user", content: "I need describe a product machine with this title, brand, model, category and most important, the specs." },
-        { role: "user", content: productFormated() }
-      ],
-      temperature: 1.0,
-      top_p: 1.0,
-      max_tokens: 1000,
-      model: modelName
-    }
-  });
+  const specsText = Object.entries(product.specs)
+    .map(([key, value]) => `- ${key}: ${value}`)
+    .join('\n');
 
-  if (isUnexpected(response)) {
-    throw response.body.error;
-  }
+  return `
+Título: ${product.title}
+Marca: ${product.brand}
+Modelo: ${product.model}
+Categoría: ${product.category}
 
-  return response.body.choices[0].message.content;
+Especificaciones Técnicas:
+${specsText}
+  `.trim();
 }
 
+export async function describe(
+  product: ProductPromptType,
+): Promise<string | undefined> {
+  const client = ModelClient(endpoint, new AzureKeyCredential(token));
+
+  try {
+    const response = await client.path('/chat/completions').post({
+      body: {
+        messages: [
+          {
+            role: 'system',
+            content: `Responde solo con un párrafo de texto plano, sin viñetas, sin encabezados, sin formato Markdown. Limítate a 100 palabras y utiliza español técnico accesible.`,
+          },
+          {
+            role: 'user',
+            content: `Por favor, redacta una descripción técnica en un solo párrafo, en español, para este producto basado en sus especificaciones. No repitas literal los campos como título o marca, sino que genera una descripción natural y técnica.`,
+          },
+          {
+            role: 'user',
+            content: formatProductPrompt(product),
+          },
+        ],
+        temperature: 0.5,
+        top_p: 1.0,
+        max_tokens: 1000,
+        model: modelName,
+      },
+    });
+
+    if (isUnexpected(response)) {
+      console.error(response.body);
+      throw new NotFoundException({ message: 'No se pudo cargar el recurso.' });
+    }
+
+    return response.body.choices?.[0]?.message?.content ?? 'No description available.';
+  } catch (error) {
+    throw new NotFoundException({
+      message: 'No se pudo cargar el recurso.',
+      error,
+    });
+  }
+}

@@ -4,7 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserLogin, UserRegister } from '../models/User';
+import { User, UserLogin } from '../models/User';
 import { PrismaService } from '../prisma.service';
 import { comparePassword } from '../utils/bcrypt';
 import { JWTConfig } from '../utils/jwt';
@@ -17,9 +17,23 @@ export class AuthService {
     private readonly jwtConfig: JWTConfig,
   ) {}
 
-  async register(user: UserRegister) {
+  async register(data: User) {
     try {
-      await this.prisma.user.create({ data: user });
+      const user = {
+        email: data.email,
+        password: data.password,
+        role: data.role,
+      };
+
+      const { id } = await this.prisma.user.create({ data: user });
+
+      const profile = {
+        user_id: id,
+        dni: data.dni,
+        name: data.name,
+      };
+
+      await this.prisma.profile.create({ data: profile });
       return {
         status: 200,
         message: 'User created successfully',
@@ -35,7 +49,7 @@ export class AuthService {
         // Error desconocido de Prisma
         throw new NotFoundException({
           message: 'Error al validar los campos recibidos',
-          data: user,
+          data,
         });
       } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
         // Error desconocido de Prisma
@@ -64,7 +78,12 @@ export class AuthService {
       const authPassw = await comparePassword(user.password, u?.password);
 
       if (authPassw) {
-        const payload = { userId: u.id, username: u.name, role: u.role };
+        const profile = await this.prisma.profile.findUnique({
+          where: {
+            user_id: u.id,
+          },
+        });
+        const payload = { userId: u.id, username: profile?.name, role: u.role };
 
         return {
           token: await this.jwtService.signAsync(

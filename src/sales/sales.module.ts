@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DescribeController } from './describe.controller';
-import { DescribeService } from './describe.service';
+import { SalesController } from './sales.controller';
+import { SalesService } from './sales.service';
+import { PrismaService } from '../../src/prisma.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
@@ -16,7 +17,7 @@ import { JwtModule } from '@nestjs/jwt';
       }),
     }),
   ],
-  controllers: [DescribeController],
-  providers: [DescribeService],
+  controllers: [SalesController],
+  providers: [SalesService, PrismaService],
 })
-export class DescribeModule {}
+export class SalesModule {}

@@ -18,6 +18,10 @@ describe('Auth Module', () => {
       create: jest.fn(),
       findUnique: jest.fn(),
     },
+    profile: {
+      create: jest.fn(),
+      findUnique: jest.fn(),
+    },
   };
 
   const jwtServiceMock = {
@@ -55,12 +59,21 @@ describe('Auth Module', () => {
           password: 'hashed',
           name: 'Test',
           dni: '12345678',
+          role: Role.CLIENTE,
         };
         (prismaMock.user.create as jest.Mock).mockResolvedValue(user);
+        (prismaMock.profile.create as jest.Mock).mockResolvedValue({ id: 1 });
 
         const result = await authService.register(user);
 
-        expect(prismaMock.user.create).toHaveBeenCalledWith({ data: user });
+        expect(prismaMock.user.create).toHaveBeenCalledWith({
+          data: {
+            email: 'test@example.com',
+            password: 'hashed',
+            role: Role.CLIENTE,
+          },
+        });
+
         expect(result).toEqual({
           status: 200,
           message: 'User created successfully',
