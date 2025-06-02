@@ -4,6 +4,7 @@ import {
   ApiOperation,
   ApiResponse,
   ApiBearerAuth,
+  ApiHeader,
 } from '@nestjs/swagger';
 import { ProductPromptType } from '../../src/types/promptTypes';
 import { describe } from '../../src/utils/getPrompt';
@@ -12,6 +13,11 @@ import { AuthGuard } from '../guards/auth/auth.guard';
 @ApiTags('Describe') // Categoría para agrupar los endpoints relacionados con descripciones
 @UseGuards(AuthGuard)
 @ApiBearerAuth()
+@ApiHeader({
+  name: 'Authorization',
+  description: 'Token JWT en formato Bearer',
+  required: true,
+})
 @Controller('describe')
 export class DescribeController {
   @Post()

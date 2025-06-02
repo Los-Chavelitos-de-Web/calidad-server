@@ -23,7 +23,7 @@ export class UsersController {
     name: 'Authorization',
     description: 'Token JWT en formato Bearer',
     required: true,
-  }) // Documentación del encabezado Authorization
+  })
   @ApiResponse({
     status: 200,
     description: 'Lista de usuarios obtenida exitosamente.',

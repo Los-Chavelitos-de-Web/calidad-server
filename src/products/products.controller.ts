@@ -9,7 +9,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { ProductCreate, ProductUpdate } from '../../src/models/Product';
 import { AuthGuard } from '../guards/auth/auth.guard';
@@ -61,6 +61,9 @@ export class ProductsController {
   @Post('create')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
+    @ApiHeader({
+      name: 'Authorization'
+    })
   @ApiOperation({ summary: 'Crear un nuevo producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Crea un nuevo producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al crear el producto.' }) // Respuesta en caso de error
@@ -83,6 +86,11 @@ export class ProductsController {
   @Put('update/:id')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
   @ApiOperation({ summary: 'Actualiza el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Actualiza un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al actualizar el producto.' }) // Respuesta en caso de error
@@ -105,6 +113,11 @@ export class ProductsController {
   @Delete('delete')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
   @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
   @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
   @ApiResponse({ status: 400, description: 'Error al eliminar el producto.' }) // Respuesta en caso de error
