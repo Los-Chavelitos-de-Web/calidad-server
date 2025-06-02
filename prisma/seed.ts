@@ -2232,21 +2232,48 @@ async function main() {
   });
 
   // Seeds para User
-  await prisma.user.create({
-    data: {
-      id: 1,
-      email: 'pancito@canela.de',
-      password: 'lacontraseñamasdificildelmundo',
-    }
+  await prisma.user.createMany({
+    data: [
+      {
+        id: 1,
+        email: 'pancito@canela.de',
+        password: 'lacontraseñamasdificildelmundo',
+        isActive: true,
+      },
+      {
+        id: 2,
+        email: 'okarun@anime.net',
+        password: 'lacontraseñamasdificildelmundo',
+        isActive: false,
+      },
+      {
+        id: 3,
+        email: 'oshi@no.ko',
+        password: 'lacontraseñamasdificildelmundo',
+        isActive: true,
+      }
+    ],
   });
 
   // Seeds para Profile
-  await prisma.profile.create({
-    data: {
-      user_id: 1,
-      dni: '12345678',
-      name: 'Pancito de canela',
-    }
+  await prisma.profile.createMany({
+    data: [
+      {
+        user_id: 1,
+        dni: '12345678',
+        name: 'Pancito de canela',
+      },
+      {
+        user_id: 2,
+        dni: '87654321',
+        name: 'Okarun',
+      },
+      {
+        user_id: 3,
+        dni: '11223344',
+        name: 'Oshi no ko',
+      },
+    ],
   });
 
   // Seeds para Sale

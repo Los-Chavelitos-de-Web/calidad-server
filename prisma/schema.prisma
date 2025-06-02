@@ -28,6 +28,7 @@ model User {
   email     String    @unique
   password  String
   role      Role      @default(CLIENTE)
+  isActive  Boolean   @default(true)
   createdAt DateTime  @default(now())
   sales     Sale[]
   Reserva   Reserva[]
@@ -65,14 +66,14 @@ model SaleItem {
 }
 
 model Reserva {
-  id        Int      @id @default(autoincrement())
-  userId    Int
-  total     Float
-  createdAt DateTime @default(now())
-  status    Status   @default(PENDIENTE)
-  notes     String?  @db.VarChar(1000)
+  id          Int           @id @default(autoincrement())
+  userId      Int
+  total       Float
+  createdAt   DateTime      @default(now())
+  status      Status        @default(PENDIENTE)
+  notes       String?       @db.VarChar(1000)
   ReservaItem ReservaItem[]
-  user      User     @relation(fields: [userId], references: [id])
+  user        User          @relation(fields: [userId], references: [id])
 }
 
 model ReservaItem {
