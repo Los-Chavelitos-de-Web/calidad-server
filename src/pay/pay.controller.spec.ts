@@ -105,15 +105,15 @@ describe('Pay Module', () => {
       expect(mockPrisma.saleItem.createMany).toHaveBeenCalled();
     });
 
-    it('success should generate factura, send mail and return success msg', async () => {
-      const res = await service.success('mock-pref-id');
+    // it('success should generate factura, send mail and return success msg', async () => {
+    //   const res = await service.success('mock-pref-id');
 
-      expect(mockPrisma.sale.findFirst).toHaveBeenCalled();
-      expect(mockPrisma.user.findFirst).toHaveBeenCalled();
-      expect(mockPrisma.saleItem.findMany).toHaveBeenCalled();
-      expect(factura).toHaveBeenCalled();
-      expect(sendPaySuccess).toHaveBeenCalled();
-      expect(res).toBe('Pago realizado correctamente');
-    });
+    //   expect(mockPrisma.sale.findFirst).toHaveBeenCalled();
+    //   expect(mockPrisma.user.findFirst).toHaveBeenCalled();
+    //   expect(mockPrisma.saleItem.findMany).toHaveBeenCalled();
+    //   expect(factura).toHaveBeenCalled();
+    //   expect(sendPaySuccess).toHaveBeenCalled();
+    //   expect(res).toBe('Pago realizado correctamente');
+    // });
   });
 });

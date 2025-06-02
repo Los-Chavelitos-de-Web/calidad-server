@@ -5,6 +5,7 @@ import { PrismaService } from '../../src/prisma.service';
 import { factura } from '../../src/utils/genFacturas';
 import { ClienteType } from '../../src/types/facturas';
 import { sendPaySuccess } from '../../src/utils/sendMail';
+import { Status } from '@prisma/client';
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_API_KEY || '',
@@ -66,7 +67,7 @@ export class PayService {
         data: {
           id: prefId || '',
           userId: userId?.id || 0,
-          status: 'pending',
+          status: Status.PENDIENTE,
           total: products.reduce((acc, item) => acc + item.unit_price * item.quantity, 0),
         }
       });
@@ -101,9 +102,18 @@ export class PayService {
         id: userId?.userId,
       },
       select: {
+        id: true,
+        email: true,
+      },
+    });
+
+    const profile = await this.prisma.profile.findFirst({
+      where: {
+        user_id: user?.id,
+      },
+      select: {
         dni: true,
         name: true,
-        email: true,
       },
     });
 
@@ -123,8 +133,8 @@ export class PayService {
     });
 
     const cliente: ClienteType = {
-      numero_documento: '000' + user?.dni || '00000000000',
-      razon_social_nombres: user?.name,
+      numero_documento: '000' + profile?.dni || '00000000000',
+      razon_social_nombres: profile?.name,
       codigo_tipo_entidad: '6',
       cliente_direccion: '',
     };
