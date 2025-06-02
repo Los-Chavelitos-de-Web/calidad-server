@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
   ForbiddenException,
   UseGuards,
+  Param,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from './users.service';
@@ -36,6 +37,38 @@ export class UsersController {
   async getAllUsers(@Headers('Authorization') headers: string) {
     try {
       return this.userService.getAllUsers();
+    } catch (error) {
+      if (error instanceof ForbiddenException) {
+        throw error;
+      }
+
+      throw new UnauthorizedException({
+        message: 'You do not have permission to access this resource',
+      });
+    }
+  }
+
+  @Get('/profile/:id')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Obtener el perfil del usuario' }) // Descripción breve del endpoint
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Obtener el perfil del usuario exitosamente.',
+  }) // Respuesta esperada
+  @ApiResponse({ status: 401, description: 'Token no válido o no encontrado.' }) // Respuesta en caso de token inválido
+  @ApiResponse({
+    status: 403,
+    description: 'No tienes permiso para acceder a este recurso.',
+  }) // Respuesta en caso de falta de permisos
+  async getProfileById(@Param('id') id: string) {
+    try {
+      return this.userService.getProfileById(parseInt(id));
     } catch (error) {
       if (error instanceof ForbiddenException) {
         throw error;
