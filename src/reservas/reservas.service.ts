@@ -14,4 +14,10 @@ export class ReservasService {
       where: { id },
     });
   }
+
+  getDetails(id: number) {
+    return this.prisma.reservaItem.findMany({
+      where: { reservaId: id },
+    });
+  }
 }

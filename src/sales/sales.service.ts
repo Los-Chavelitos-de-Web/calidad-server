@@ -14,4 +14,10 @@ export class SalesService {
         where: { id: id },
     });
   }
+
+  getDetails(id: string) {
+    return this.prisma.saleItem.findMany({
+      where: { saleId: id },
+    });
+  }
 }

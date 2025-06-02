@@ -52,4 +52,33 @@ export class SalesController {
     }
     return data;
   }
+
+  @Get('/items/:id')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  @ApiOperation({ summary: 'Devuelve los detalles una venta por individual' }) // Descripción breve del endpoint
+  @ApiResponse({
+    status: 201,
+    description: 'Devuelve los detalles una venta por individual',
+  }) // Respuesta esperada
+  @ApiResponse({
+    status: 400,
+    description: 'Datos inválidos para obtener los detalles de la venta.',
+  }) // Respuesta en caso de error
+  async getDetails(@Param('id') id: string) {
+    const data = await this.salesService.getDetails(id);
+
+    if (!data) {
+      throw new NotFoundException({
+        message: 'Sale not found',
+        error: 'No sale found with the provided ID',
+      });
+    }
+    return data;
+  }
 }

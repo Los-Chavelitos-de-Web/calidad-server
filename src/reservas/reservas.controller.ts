@@ -52,4 +52,33 @@ export class ReservasController {
     }
     return data;
   }
+
+  @Get('/items/:id')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  @ApiOperation({ summary: 'Obtener los detalle de una reserva individual' }) // Descripción breve del endpoint
+  @ApiResponse({
+    status: 201,
+    description: 'Obtener los detalle de una reserva individual',
+  }) // Respuesta esperada
+  @ApiResponse({
+    status: 400,
+    description: 'Datos inválidos para obtener los detalles de la reserva.',
+  }) // Respuesta en caso de error
+  async getDetails(@Param('id') id: string) {
+    const data = await this.reservasService.getDetails(parseInt(id));
+
+    if (!data) {
+      throw new NotFoundException({
+        message: 'Reserva not found',
+        error: 'No reserva found with the provided ID',
+      });
+    }
+    return data;
+  }
 }
