@@ -13,8 +13,7 @@ const client = new MercadoPagoConfig({
 
 @Injectable()
 export class PayService {
-
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async createPreference(correo: string, products: ProductPay[]) {
     const pref = new Preference(client);
@@ -60,7 +59,7 @@ export class PayService {
         codigo_producto: item.id + '',
         codigo_unidad: 'ZZ',
         codigo_sunat: '-',
-        tipo_igv_codigo: '10'
+        tipo_igv_codigo: '10',
       }));
 
       await this.prisma.sale.create({
@@ -68,8 +67,11 @@ export class PayService {
           id: prefId || '',
           userId: userId?.id || 0,
           status: Status.PENDIENTE,
-          total: products.reduce((acc, item) => acc + item.unit_price * item.quantity, 0),
-        }
+          total: products.reduce(
+            (acc, item) => acc + item.unit_price * item.quantity,
+            0,
+          ),
+        },
       });
 
       await this.prisma.saleItem.createMany({
@@ -87,40 +89,23 @@ export class PayService {
   }
 
   async success(prefId: string) {
-
     const userId = await this.prisma.sale.findFirst({
-      where: {
-        id: prefId,
-      },
-      select: {
-        userId: true,
-      },
+      where: { id: prefId },
+      select: { userId: true },
     });
 
     const user = await this.prisma.user.findFirst({
-      where: {
-        id: userId?.userId,
-      },
-      select: {
-        id: true,
-        email: true,
-      },
+      where: { id: userId?.userId },
+      select: { id: true, email: true },
     });
 
     const profile = await this.prisma.profile.findFirst({
-      where: {
-        user_id: user?.id,
-      },
-      select: {
-        dni: true,
-        name: true,
-      },
+      where: { user_id: user?.id },
+      select: { dni: true, name: true },
     });
 
     const items = await this.prisma.saleItem.findMany({
-      where: {
-        saleId: prefId,
-      },
+      where: { saleId: prefId },
       select: {
         producto: true,
         codigo_producto: true,
@@ -133,8 +118,8 @@ export class PayService {
     });
 
     const cliente: ClienteType = {
-      numero_documento: '000' + profile?.dni || '00000000000',
-      razon_social_nombres: profile?.name,
+      numero_documento: '000' + (profile?.dni || '00000000000'),
+      razon_social_nombres: profile?.name || 'Cliente',
       codigo_tipo_entidad: '6',
       cliente_direccion: '',
     };
@@ -144,6 +129,12 @@ export class PayService {
 
     await sendPaySuccess(prefId, user?.email || '', items, ruta_pdf);
 
-    return 'Pago realizado correctamente';
+    // ✅ Delay real en backend
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+
+    return {
+      message: 'Pago realizado correctamente',
+      redirect: process.env.FRONT_URL,
+    };
   }
 }
