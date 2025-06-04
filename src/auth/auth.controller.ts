@@ -25,4 +25,5 @@ export class AuthController {
     login(@Body() user: UserLogin) {
         return this.authService.login(user);
     }
+
 }

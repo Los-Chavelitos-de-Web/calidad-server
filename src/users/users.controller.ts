@@ -6,10 +6,13 @@ import {
   ForbiddenException,
   UseGuards,
   Param,
+  Body,
+  Put,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { AuthGuard } from '../guards/auth/auth.guard';
+import { UserChangeIsActive } from 'src/models/User';
 
 @ApiTags('Users') // Categoría para agrupar los endpoints relacionados con usuarios
 @Controller('users')
@@ -78,5 +81,28 @@ export class UsersController {
         message: 'You do not have permission to access this resource',
       });
     }
+  }
+
+  @Put('isActive')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  @ApiTags('Users')
+  @ApiOperation({ summary: 'Cambiar el estado activo de un usuario' })
+  @ApiResponse({ status: 200, description: 'Estado activo del usuario actualizado exitosamente.' })
+  @ApiResponse({ status: 404, description: 'Usuario no encontrado.' })
+  @ApiResponse({ status: 403, description: 'No tienes permiso para acceder a este recurso.' })
+  @ApiResponse({ status: 401, description: 'Token no válido o no encontrado.' })
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  changeIsActive(@Body() user: UserChangeIsActive) {
+      return this.userService.changeIsActive(user);
   }
 }

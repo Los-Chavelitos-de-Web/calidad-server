@@ -1,8 +1,7 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
 import { PayService } from './pay.service';
 import { PayData, PaySuccess } from '../../src/types/PayTypes';
-import { AuthGuard } from '../../src/guards/auth/auth.guard';
 
 @ApiTags('Pay') // Categoría para agrupar los endpoints relacionados con pagos
 @Controller('pay')
