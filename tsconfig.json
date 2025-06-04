@@ -19,9 +19,8 @@
     "noFallthroughCasesInSwitch": false,
     "strict": true,
     "paths": {
-      "*": [
-        "*"
-      ] // Esto asegura que cualquier importación desde "src/*" se resuelva correctamente.
+      "*": ["*"]
     }
-  }
+  },
+  "include": ["src/**/*", "prisma/seed.ts"]
 }
