@@ -49,6 +49,7 @@ export class AuthService {
         // Error desconocido de Prisma
         throw new NotFoundException({
           message: 'Error al validar los campos recibidos',
+          error: error.message,
           data,
         });
       } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
