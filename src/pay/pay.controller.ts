@@ -10,7 +10,6 @@ export class PayController {
   constructor(private readonly payService: PayService) { }
 
   @Post()
-  @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @ApiHeader({
     name: 'Authorization',
