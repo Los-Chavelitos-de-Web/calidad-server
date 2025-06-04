@@ -61,3 +61,14 @@ export class UserChangeIsActive {
   @IsNotEmpty()
   isActive: boolean = false;
 }
+
+export class UserChangeRole {
+  @ApiProperty({ description: 'Id del usuario' })
+  @IsNumber()
+  @IsNotEmpty()
+  id: number = 0;
+
+  @ApiProperty({ description: 'Rol del usuario' })
+  @IsNotEmpty()
+  role: Role = Role.CLIENTE;
+}

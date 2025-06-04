@@ -12,7 +12,7 @@ import {
 import { ApiTags, ApiOperation, ApiResponse, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { AuthGuard } from '../guards/auth/auth.guard';
-import { UserChangeIsActive } from 'src/models/User';
+import { UserChangeIsActive, UserChangeRole } from 'src/models/User';
 
 @ApiTags('Users') // Categoría para agrupar los endpoints relacionados con usuarios
 @Controller('users')
@@ -104,5 +104,28 @@ export class UsersController {
   })
   changeIsActive(@Body() user: UserChangeIsActive) {
       return this.userService.changeIsActive(user);
+  }
+
+  @Put('role')
+  @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  @ApiTags('Users')
+  @ApiOperation({ summary: 'Cambiar el rol de un usuario' })
+  @ApiResponse({ status: 200, description: 'Rol del usuario actualizado exitosamente.' })
+  @ApiResponse({ status: 404, description: 'Usuario no encontrado.' })
+  @ApiResponse({ status: 403, description: 'No tienes permiso para acceder a este recurso.' })
+  @ApiResponse({ status: 401, description: 'Token no válido o no encontrado.' })
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Token JWT en formato Bearer',
+    required: true,
+  })
+  changeRole(@Body() user: UserChangeRole) {
+      return this.userService.changeRole(user);
   }
 }
