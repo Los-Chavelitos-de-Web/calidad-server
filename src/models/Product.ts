@@ -40,12 +40,12 @@ export class ProductCreate {
 
   @ApiProperty({ description: 'Precio del producto', required: false })
   @IsNotEmpty()
-  @IsString()
+  @IsNumber()
   price?: number;
 
   @ApiProperty({ description: 'Cantidad en stock del producto', required: false })
   @IsNotEmpty()
-  @IsString()
+  @IsNumber()
   stock?: number;
 
   @ApiProperty({ description: 'Fecha de creación del producto', required: false })

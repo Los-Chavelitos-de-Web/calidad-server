@@ -48,25 +48,27 @@ describe('ProductsController', () => {
           category: expect.any(String),
           model: expect.any(String),
           specs: expect.any(Object),
+          isActive: expect.any(Boolean),
         }),
       );
 
+      // Validaciones extra explícitas (opcional)
       expect(
-        product.description === null || typeof product.description === 'string'
+        product.description === null || typeof product.description === 'string',
+      ).toBe(true);
+
+      expect(product.price === null || typeof product.price === 'number').toBe(
+        true,
+      );
+
+      expect(
+        product.manualUrl === null || typeof product.manualUrl === 'string',
       ).toBe(true);
 
       expect(
-        product.price === null || typeof product.price === 'number'
+        product.manufacturer === null ||
+          typeof product.manufacturer === 'string',
       ).toBe(true);
-
-      expect(
-        product.manualUrl === null || typeof product.manualUrl === 'string'
-      ).toBe(true);
-
-      expect(
-        product.manufacturer === null || typeof product.manufacturer === 'string'
-      ).toBe(true);
-
     }
   });
 });
