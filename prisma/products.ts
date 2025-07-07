@@ -2706,7 +2706,6 @@ export const products = [
     brand: 'RATO',
     model: 'RM120-V',
     category: 'Motor Gasolinero',
-    type: 'Para Apisonador',
     specs: {
       applications: ['Apisonadores'],
       engineType: 'Motor de 4 tiempos, OHV, monocilíndrico',
@@ -2753,7 +2752,6 @@ export const products = [
     brand: 'RATO',
     model: 'RM120-V',
     category: 'Motor Gasolinero',
-    type: 'Para Apisonador',
     specs: {
       applications: ['Apisonadores'],
       engineType: 'Motor de 4 tiempos, OHV, monocilíndrico',
@@ -2800,7 +2798,6 @@ export const products = [
     brand: 'RATO',
     model: 'RM120-V',
     category: 'Motor Gasolinero',
-    type: 'Para Apisonador',
     specs: {
       applications: ['Apisonadores'],
       engineType: 'Motor de 4 tiempos, OHV, monocilíndrico',
@@ -2848,7 +2845,6 @@ export const products = [
     brand: 'RATO',
     model: 'RM120-V',
     category: 'Motor Gasolinero',
-    type: 'Para Apisonador',
     specs: {
       applications: ['Apisonadores'],
       engineType: 'Motor de 4 tiempos, OHV, monocilíndrico',
@@ -2896,7 +2892,6 @@ export const products = [
     brand: 'RATO',
     model: 'RMS53Q-V225',
     category: 'Cortacésped',
-    type: 'Autopropulsado con motor gasolinero de 4 tiempos, eje vertical, OHV, monocilíndrico',
     specs: {
       applications: ['Jardines', 'Parques', 'Campos deportivos'],
       cuttingWidthCm: 53,
