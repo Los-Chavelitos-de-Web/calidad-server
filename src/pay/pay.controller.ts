@@ -42,7 +42,7 @@ export class PayController {
     status: 400,
     description: 'Datos inválidos para confirmar el pago.',
   }) // Respuesta en caso de error
-  async success(@Query() paySuccess: PaySuccess, @Res() res: Response) {
+  async successfulll(@Query() paySuccess: PaySuccess, @Res() res?: Response) {
     await this.payService.success(paySuccess.preference_id);
 
     const html = `
@@ -62,6 +62,6 @@ export class PayController {
       </html>
     `;
 
-    res.send(html);
+    res?.send(html);
   }
 }

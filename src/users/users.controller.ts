@@ -12,7 +12,7 @@ import {
 import { ApiTags, ApiOperation, ApiResponse, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { AuthGuard } from '../guards/auth/auth.guard';
-import { UserChangeIsActive, UserChangeRole } from 'src/models/User';
+import { UserChangeIsActive, UserChangeRole } from '../../src/models/User';
 
 @ApiTags('Users') // Categoría para agrupar los endpoints relacionados con usuarios
 @Controller('users')
