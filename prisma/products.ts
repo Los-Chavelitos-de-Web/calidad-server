@@ -1,7 +1,56 @@
+const imgBonhoeffer = [
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927518/calidad_images/bonhoeffer/Selecci%C3%B3n_002_drk3s0.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927517/calidad_images/bonhoeffer/Selecci%C3%B3n_003_qxb09d.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927517/calidad_images/bonhoeffer/Selecci%C3%B3n_001_nmvfnw.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927517/calidad_images/bonhoeffer/Selecci%C3%B3n_004_vt4pz8.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927517/calidad_images/bonhoeffer/Selecci%C3%B3n_005_gbo08i.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927517/calidad_images/bonhoeffer/Selecci%C3%B3n_006_lae5en.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927517/calidad_images/bonhoeffer/Selecci%C3%B3n_007_fs2utd.png'
+];
+
+const imgCifarelli = [
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927529/calidad_images/cifarelli/Selecci%C3%B3n_001_l6zixf.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927528/calidad_images/cifarelli/Selecci%C3%B3n_003_viwwwm.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927528/calidad_images/cifarelli/Selecci%C3%B3n_002_gt3nmi.png'
+];
+
+const imgDucati = [
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927540/calidad_images/ducati/Selecci%C3%B3n_001_dymlxv.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927540/calidad_images/ducati/Selecci%C3%B3n_002_gpkzhi.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927540/calidad_images/ducati/Selecci%C3%B3n_003_d0ykaf.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927540/calidad_images/ducati/Selecci%C3%B3n_004_gkm6az.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927539/calidad_images/ducati/Selecci%C3%B3n_005_bsrr3c.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927539/calidad_images/ducati/Selecci%C3%B3n_006_laqort.png'
+];
+
+const imgHonda = [
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927555/calidad_images/honda/Selecci%C3%B3n_001_eoftxj.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927555/calidad_images/honda/Selecci%C3%B3n_002_g3cya4.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927554/calidad_images/honda/Selecci%C3%B3n_003_d9hecg.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927554/calidad_images/honda/Selecci%C3%B3n_004_jy1ur8.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927553/calidad_images/honda/Selecci%C3%B3n_005_prtcgo.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927553/calidad_images/honda/Selecci%C3%B3n_006_dknzj0.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927553/calidad_images/honda/Selecci%C3%B3n_007_wab6yq.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927553/calidad_images/honda/Selecci%C3%B3n_008_f5c6e9.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927553/calidad_images/honda/Selecci%C3%B3n_009_zaeoro.png'
+];
+
+const imgRato = [
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927567/calidad_images/rato/Selecci%C3%B3n_001_qemijf.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927566/calidad_images/rato/Selecci%C3%B3n_002_suifrh.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927566/calidad_images/rato/Selecci%C3%B3n_003_zkpkac.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927565/calidad_images/rato/Selecci%C3%B3n_004_nlbrd6.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927565/calidad_images/rato/Selecci%C3%B3n_006_fo8f0o.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927565/calidad_images/rato/Selecci%C3%B3n_007_smyhnw.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927565/calidad_images/rato/Selecci%C3%B3n_008_mhphdh.png',
+  'https://res.cloudinary.com/del5cxt4n/image/upload/v1751927565/calidad_images/rato/Selecci%C3%B3n_009_btjhtp.png'
+];
+
 export const products = [
   {
     title: 'Atomizador de Mochila Cifarelli L3EVO18',
     brand: 'Cifarelli',
+    imageUrl: imgCifarelli[Math.round(Math.random() * (imgCifarelli.length - 1))],
     model: 'L3EVO18',
     category: 'Atomizador',
     specs: {
@@ -57,6 +106,7 @@ export const products = [
   {
     title: 'Soplador de Mochila Cifarelli BL 1200',
     brand: 'Cifarelli',
+    imageUrl: imgCifarelli[Math.round(Math.random() * (imgCifarelli.length - 1))],
     model: 'BL 1200',
     category: 'Soplador',
     specs: {
@@ -109,6 +159,7 @@ export const products = [
   {
     title: 'Espolvoreador Cifarelli M1200PG',
     brand: 'Cifarelli',
+    imageUrl: imgCifarelli[Math.round(Math.random() * (imgCifarelli.length - 1))],
     model: 'M1200PG',
     category: 'Espolvoreador',
     specs: {
@@ -160,6 +211,7 @@ export const products = [
   {
     title: 'Motobomba Ducati DCW35251',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DCW35251',
     category: 'Motobomba',
     specs: {
@@ -203,6 +255,7 @@ export const products = [
   {
     title: 'Biotrituradora a Gasolina Ducati DWS65',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DWS65',
     category: 'Biotrituradora',
     specs: {
@@ -257,6 +310,7 @@ export const products = [
   {
     title: 'Biotrituradora a Gasolina Ducati DWS150-DWS150E',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DWS150-DWS150E',
     category: 'Biotrituradora',
     specs: {
@@ -311,6 +365,7 @@ export const products = [
   {
     title: 'Motor 4T OHV Monocilíndrico Ducati DPE270Q',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DPE270Q',
     category: 'Motor',
     specs: {
@@ -351,6 +406,7 @@ export const products = [
   {
     title: 'Pulverizador Mochila DSP 2000',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DSP3120S',
     category: 'Pulverizador',
     specs: {
@@ -380,6 +436,7 @@ export const products = [
   {
     title: 'Motoazada Diesel DTL 11000D',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DTL11000D',
     category: 'Motoazada Diesel',
     specs: {
@@ -432,6 +489,7 @@ export const products = [
   {
     title: 'Motoazada Gasolina DTL 10000',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DTL10000',
     category: 'Motoazada Gasolina',
     specs: {
@@ -482,6 +540,7 @@ export const products = [
   {
     title: 'Motobomba Aguas Limpias DCW502',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DCW502',
     category: 'Motobomba Aguas Limpias',
     specs: {
@@ -527,6 +586,7 @@ export const products = [
   {
     title: 'Motobomba Aguas Limpias DCW802',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DCW802',
     category: 'Motobomba Aguas Limpias',
     specs: {
@@ -572,6 +632,7 @@ export const products = [
   {
     title: 'Motor 4T OHV Monocilíndrico DPE 390Q',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DPE 390Q',
     category: 'Motor 4T OHV Monocilíndrico',
     specs: {
@@ -612,6 +673,7 @@ export const products = [
   {
     title: 'Motor 4T OHV Monocilíndrico DPE 210Q',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DPE 210Q',
     category: 'Motor 4T OHV Monocilíndrico',
     specs: {
@@ -652,6 +714,7 @@ export const products = [
   {
     title: 'Pulverizador Mochila Líquidos DSP 2500',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'DSP 2500',
     category: 'Pulverizador Mochila Líquidos',
     specs: [
@@ -734,6 +797,7 @@ export const products = [
   {
     title: 'Planta de Emergencia EZ6500CXS',
     brand: 'Ducati',
+    imageUrl: imgDucati[Math.round(Math.random() * (imgDucati.length - 1))],
     model: 'EZ6500CXS',
     category: 'Planta de Emergencia',
     specs: [
@@ -768,6 +832,7 @@ export const products = [
   {
     title: 'Motor GP160H QH1',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GP160H QH1',
     category: 'Motor Multipropósito',
     specs: [
@@ -810,6 +875,7 @@ export const products = [
   {
     title: 'Motor GX430',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX430 QX',
     category: 'Motor Multifuncional',
     specs: [
@@ -853,6 +919,7 @@ export const products = [
   {
     title: 'Bomba Tragasólidos WT30XK4',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'WT30XK4',
     category: 'Bomba Tragasólidos',
     specs: [
@@ -891,6 +958,7 @@ export const products = [
   {
     title: 'Bomba Autocebante WL20XH',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'WL20XH',
     category: 'Bomba Autocebante',
     specs: [
@@ -938,6 +1006,7 @@ export const products = [
   {
     title: 'Bomba Autocebante WL20XH',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'WL20XH',
     category: 'Bomba Autocebante',
     specs: [
@@ -985,6 +1054,7 @@ export const products = [
   {
     title: 'Bomba Autocebante WL20XH',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'WL20XH',
     category: 'Bomba Autocebante',
     specs: [
@@ -1032,6 +1102,7 @@ export const products = [
   {
     title: 'Bomba Autocebante WB30XH2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'WB30XH2',
     category: 'Bomba Autocebante',
     specs: [
@@ -1074,6 +1145,7 @@ export const products = [
   {
     title: 'Bomba Tragasólidos WT40XK3',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'WT40XK3',
     category: 'Bomba Tragasólidos',
     specs: [
@@ -1115,6 +1187,7 @@ export const products = [
   {
     title: 'Generador EG1000N',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'EG1000N',
     category: 'Generador',
     specs: [
@@ -1171,6 +1244,7 @@ export const products = [
   {
     title: 'Generador EG5000CX',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'EG5000CX',
     category: 'Generador',
     specs: [
@@ -1235,6 +1309,7 @@ export const products = [
   {
     title: 'Generador EG6500CXS-S1H',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'EG6500CXS-S1H',
     category: 'Generador',
     specs: [
@@ -1298,6 +1373,7 @@ export const products = [
   {
     title: 'Generador EM10000K1',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'EM10000K1',
     category: 'Generador',
     specs: [
@@ -1365,6 +1441,7 @@ export const products = [
   {
     title: 'Generador GXH50',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GXH50',
     category: 'Generador',
     specs: {
@@ -1414,6 +1491,7 @@ export const products = [
   {
     title: 'Generador GXR120T',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GXR120T',
     category: 'Generador',
     specs: {
@@ -1463,6 +1541,7 @@ export const products = [
   {
     title: 'Generador GP200',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GP200',
     category: 'Generador',
     specs: {
@@ -1514,6 +1593,7 @@ export const products = [
   {
     title: 'Motor GP200H',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GP200H',
     category: 'Motor',
     specs: {
@@ -1563,6 +1643,7 @@ export const products = [
   {
     title: 'Motor GX120T3',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX120T3',
     category: 'Motor',
     specs: {
@@ -1612,6 +1693,7 @@ export const products = [
   {
     title: 'Motor GX160H2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX160H2',
     category: 'Motor',
     specs: {
@@ -1661,6 +1743,7 @@ export const products = [
   {
     title: 'Motor GX200T2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX200T2',
     category: 'Motor',
     specs: {
@@ -1710,6 +1793,7 @@ export const products = [
   {
     title: 'Motor GX200T2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX200T2',
     category: 'Motor',
     specs: {
@@ -1759,6 +1843,7 @@ export const products = [
   {
     title: 'Motor GX270H2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX270H2',
     category: 'Motor',
     specs: {
@@ -1808,6 +1893,7 @@ export const products = [
   {
     title: 'Motor GX35T',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX35T',
     category: 'Motor',
     specs: {
@@ -1857,6 +1943,7 @@ export const products = [
   {
     title: 'Motor GX390H2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX390H2',
     category: 'Motor',
     specs: {
@@ -1906,6 +1993,7 @@ export const products = [
   {
     title: 'Motor GX50T',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX50T',
     category: 'Motor',
     specs: {
@@ -1955,6 +2043,7 @@ export const products = [
   {
     title: 'Motor GX630RH',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX630RH',
     category: 'Motor',
     specs: {
@@ -2004,6 +2093,7 @@ export const products = [
   {
     title: 'Motor GXR120RT',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GXR120RT',
     category: 'Motor',
     specs: {
@@ -2053,6 +2143,7 @@ export const products = [
   {
     title: 'Motor GXV160H2 (HRJ216K3 TWNH)',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GXV160H2',
     category: 'Motor',
     specs: {
@@ -2111,6 +2202,7 @@ export const products = [
   {
     title: 'Motor GX390T2',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX390T2',
     category: 'Motor',
     specs: {
@@ -2159,6 +2251,7 @@ export const products = [
   {
     title: 'Motor GX35T',
     brand: 'Honda',
+    imageUrl: imgHonda[Math.round(Math.random() * (imgHonda.length - 1))],
     model: 'GX35T',
     category: 'Motor',
     specs: {
@@ -2197,6 +2290,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R100',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R100',
     category: 'Motor Gasolinero',
     specs: {
@@ -2248,6 +2342,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R100',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R100',
     category: 'Motor Gasolinero',
     specs: {
@@ -2299,6 +2394,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R100',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R100',
     category: 'Motor Gasolinero',
     specs: {
@@ -2350,6 +2446,7 @@ export const products = [
   {
     title: 'Generador Gasolinero RATO R12000DP-A',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R12000DP-A',
     category: 'Generador Gasolinero',
     specs: {
@@ -2412,6 +2509,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R210',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R210',
     category: 'Motor Gasolinero',
     specs: {
@@ -2473,6 +2571,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R210-V',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R210-V',
     category: 'Motor Gasolinero',
     specs: {
@@ -2521,6 +2620,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R300',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R300',
     category: 'Motor Gasolinero',
     specs: {
@@ -2582,6 +2682,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R300',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R300',
     category: 'Motor Gasolinero',
     specs: {
@@ -2643,6 +2744,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO R300',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'R300',
     category: 'Motor Gasolinero',
     specs: {
@@ -2704,6 +2806,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO RM120-V',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'RM120-V',
     category: 'Motor Gasolinero',
     specs: {
@@ -2750,6 +2853,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO RM120-V',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'RM120-V',
     category: 'Motor Gasolinero',
     specs: {
@@ -2796,6 +2900,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO RM120-V',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'RM120-V',
     category: 'Motor Gasolinero',
     specs: {
@@ -2843,6 +2948,7 @@ export const products = [
   {
     title: 'Motor Gasolinero RATO RM120-V',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'RM120-V',
     category: 'Motor Gasolinero',
     specs: {
@@ -2890,6 +2996,7 @@ export const products = [
   {
     title: 'Cortacésped Autopropulsado RATO RMS53Q-V225',
     brand: 'RATO',
+    imageUrl: imgRato[Math.round(Math.random() * (imgRato.length - 1))],
     model: 'RMS53Q-V225',
     category: 'Cortacésped',
     specs: {
