@@ -52,7 +52,6 @@ export class UsersController {
   }
 
   @Get('/profile/:id')
-  @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Obtener el perfil del usuario' }) // Descripción breve del endpoint
   @ApiHeader({
