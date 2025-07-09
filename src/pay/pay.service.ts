@@ -94,6 +94,15 @@ export class PayService {
       select: { userId: true },
     });
 
+    await this.prisma.sale.update({
+      where: {
+        id: prefId,
+      },
+      data: {
+        status: Status.CONFIRMADA,
+      },
+    });
+
     const user = await this.prisma.user.findFirst({
       where: { id: userId?.userId },
       select: { id: true, email: true },
