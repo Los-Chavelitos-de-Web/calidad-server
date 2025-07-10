@@ -10,11 +10,12 @@ import { PayModule } from './pay/pay.module';
 import { DescribeModule } from './describe/describe.module';
 import { SalesModule } from './sales/sales.module';
 import { ReservasModule } from './reservas/reservas.module';
+import { LibroReclamacionesModule } from './libro-reclamaciones/libro-reclamaciones.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-  }), ProductsModule, AuthModule, UsersModule, JwtModule, PayModule, DescribeModule, SalesModule, ReservasModule],
+  }), ProductsModule, AuthModule, UsersModule, JwtModule, PayModule, DescribeModule, SalesModule, ReservasModule, LibroReclamacionesModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -36,6 +36,14 @@ model User {
   Profile   Profile[]
 }
 
+model LibroReclamaciones {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  createdAt   DateTime  @default(now())
+  title       String    @db.VarChar(100)
+  description String    @db.VarChar(1000)
+}
+
 model Profile {
   user_id Int    @id
   user    User   @relation(fields: [user_id], references: [id])

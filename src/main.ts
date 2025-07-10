@@ -18,6 +18,7 @@ async function bootstrap() {
     .setTitle('CRN Api')
     .setDescription('API de Comercial Rafael Norte - CRN')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory);
