@@ -59,7 +59,7 @@ export async function describe(
 
     if (isUnexpected(response)) {
       console.error(response.body);
-      throw new NotFoundException({ message: 'No se pudo cargar el recurso.' });
+      return undefined;
     }
 
     return response.body.choices?.[0]?.message?.content ?? 'No description available.';
