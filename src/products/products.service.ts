@@ -44,7 +44,7 @@ export class ProductsService {
 
     return {
       ...prod_all,
-      description: desc,
+      description: desc || 'Description unavailable.',
     };
   }
 
