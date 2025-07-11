@@ -45,8 +45,8 @@ export class ProductCreate {
 
   @ApiProperty({ description: 'Cantidad en stock del producto', required: false })
   @IsNotEmpty()
-  @IsNumber()
-  stock?: number;
+  @IsObject({ message: 'El stock es un Objeto JSON y debe seguir el formato de stock: { Piura: 0, Sullana: 0, Tambogrande: 0 }' })
+  stock?: Record<string, any> = {};
 
   @ApiProperty({ description: 'Fecha de creación del producto', required: false })
   createdAt?: Date;
