@@ -42,6 +42,7 @@ model LibroReclamaciones {
   createdAt   DateTime  @default(now())
   title       String    @db.VarChar(100)
   description String    @db.VarChar(1000)
+  status    Status     @default(PENDIENTE)
 }
 
 model Profile {

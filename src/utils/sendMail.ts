@@ -81,3 +81,43 @@ export const sendPaySuccess = async (prefer_id: string, email: string, items: It
     }
   });
 };
+
+export const sendLibroReclamaciones = async (content: string, email: string) => {
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    auth: {
+      user: AUTH_USER,
+      pass: AUTH_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  transporter.verify(function (error) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("📩 Server is ready to take our messages");
+    }
+  });
+
+  const mailOptions = {
+    from: `"Comercial Rafael Norte S.A.C" <${AUTH_USER}>`,
+    to: email,
+    subject: `RESPUESTA <LIBRO DE RECLAMACIONES>`,
+    html: content,
+  };
+
+  transporter.sendMail(mailOptions, (error) => {
+    if (error) {
+      console.error(error);
+      return error;
+    } else {
+      console.log(`Facturada Success a => ${email}`);
+      return `Facturada Success a => ${email}`;
+    }
+  });
+};

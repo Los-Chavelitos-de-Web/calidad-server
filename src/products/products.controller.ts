@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
-import { ProductCreate, ProductUpdate } from '../../src/models/Product';
+import { ProductCreate, ProductUpdate, ProductUpdateStatus } from '../../src/models/Product';
 import { AuthGuard } from '../guards/auth/auth.guard';
 
 @ApiTags('Products') // Categoría para agrupar los endpoints relacionados con productos
@@ -105,12 +105,7 @@ export class ProductsController {
     }
   }
 
-  /**
-   * Elimina un producto en la base de datos
-   * @param id Identificador del producto
-   * @returns Un mensaje de satisfaccion por parte de prisma o de error
-   */
-  @Delete('delete')
+  @Put('status/:id')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @ApiHeader({
@@ -118,22 +113,49 @@ export class ProductsController {
     description: 'Token JWT en formato Bearer',
     required: true,
   })
-  @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
-  @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
-  @ApiResponse({ status: 400, description: 'Error al eliminar el producto.' }) // Respuesta en caso de error
-  async deleteProduct(@Body() req: { id: number }) {
+  @ApiOperation({ summary: 'Actualiza el producto' }) // Descripción breve del endpoint
+  @ApiResponse({ status: 200, description: 'Actualiza un producto' }) // Respuesta esperada
+  @ApiResponse({ status: 400, description: 'Error al actualizar el producto.' }) // Respuesta en caso de error
+  async updateProductStatus(@Param('id') id: string, @Body() p: ProductUpdateStatus) {
     try {
-      await this.prodService.deleteProduct(req.id);
-
-      return {
-        res: 'ok',
-        message: `Producto ${req.id} eliminado correctamente`,
-      };
+      return await this.prodService.updateProductStatus(parseInt(id), p);
     } catch (error) {
       throw new NotFoundException({
         status: 400,
-        message: `Error al eliminar el producto: ${error}`,
+        message: `Error al actualizar el producto: ${error}`,
       });
     }
   }
+
+  /**
+   * Elimina un producto en la base de datos
+   * @param id Identificador del producto
+   * @returns Un mensaje de satisfaccion por parte de prisma o de error
+   */
+  // @Delete('delete')
+  // @UseGuards(AuthGuard)
+  // @ApiBearerAuth()
+  // @ApiHeader({
+  //   name: 'Authorization',
+  //   description: 'Token JWT en formato Bearer',
+  //   required: true,
+  // })
+  // @ApiOperation({ summary: 'Elimina el producto' }) // Descripción breve del endpoint
+  // @ApiResponse({ status: 200, description: 'Elimina un producto' }) // Respuesta esperada
+  // @ApiResponse({ status: 400, description: 'Error al eliminar el producto.' }) // Respuesta en caso de error
+  // async deleteProduct(@Body() req: { id: number }) {
+  //   try {
+  //     await this.prodService.deleteProduct(req.id);
+
+  //     return {
+  //       res: 'ok',
+  //       message: `Producto ${req.id} eliminado correctamente`,
+  //     };
+  //   } catch (error) {
+  //     throw new NotFoundException({
+  //       status: 400,
+  //       message: `Error al eliminar el producto: ${error}`,
+  //     });
+  //   }
+  // }
 }

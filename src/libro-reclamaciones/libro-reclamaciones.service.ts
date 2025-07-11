@@ -1,13 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { LibroReclamacionesCreate, LibroReclamacionesUpdate } from 'src/models/LibroReclamaciones';
+import {
+  LibroReclamacionesBase,
+  LibroReclamacionesCreate,
+  LibroReclamacionesResponse,
+  LibroReclamacionesUpdate,
+} from 'src/models/LibroReclamaciones';
 import { PrismaService } from 'src/prisma.service';
+import { sendLibroReclamaciones } from 'src/utils/sendMail';
 
 @Injectable()
 export class LibroReclamacionesService {
   constructor(private readonly prisma: PrismaService) {}
 
   getAll() {
-    this.prisma.libroReclamaciones.findMany();
+    return this.prisma.libroReclamaciones.findMany();
   }
 
   create(libroData: LibroReclamacionesCreate) {
@@ -22,6 +28,44 @@ export class LibroReclamacionesService {
         id,
       },
       data: libroData,
+    });
+  }
+
+  async responder(response: LibroReclamacionesResponse) {
+    const libro = await this.prisma.libroReclamaciones.update({
+      where: {
+        id: response.libro_id || 0,
+      },
+      data: {
+        status: 'CONFIRMADA',
+      },
+    });
+
+    const user = await this.prisma.user.findFirst({
+      where: {
+        id: libro.userId,
+      },
+      select: {
+        email: true,
+      },
+    });
+
+    await sendLibroReclamaciones(response?.content || '', user?.email || '');
+
+    return {
+      ok: true,
+      message: `Respuesta a ${libro?.title} enviada a ${user?.email}.`,
+    };
+  }
+
+  updateStatus(id: number) {
+    return this.prisma.libroReclamaciones.update({
+      where: {
+        id,
+      },
+      data: {
+        status: 'CANCELADA',
+      },
     });
   }
 

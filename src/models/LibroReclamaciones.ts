@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength, Min, MinLength } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsObject, IsString, MaxLength, Min, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger'; // Importar ApiProperty
 
 export class LibroReclamacionesBase {
@@ -16,7 +16,7 @@ export class LibroReclamacionesBase {
   @ApiProperty({ description: 'Fecha de la reclamacion' })
   @IsString()
   @IsNotEmpty()
-  createdAt?: string;
+  createdAt?: Date;
 
   @ApiProperty({ description: 'Titulo de la reclamacion' })
   @IsString()
@@ -63,4 +63,17 @@ export class LibroReclamacionesUpdate {
   @IsString()
   @IsNotEmpty()
   description: string = '';
+}
+
+export class LibroReclamacionesResponse {
+
+  @ApiProperty({ description: 'Libro de reclamaciones' })
+  @IsNumber()
+  @Min(1)
+  libro_id?: number;
+
+  @ApiProperty({ description: 'Contenido de la respuesta a la reclamación' })
+  @IsString()
+  @IsNotEmpty()
+  content?: string;
 }

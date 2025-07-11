@@ -28,114 +28,129 @@ export class ProductCreate {
   @IsString()
   title: string = '';
 
+  @ApiProperty({ description: 'Imagen del producto' })
+  @IsString()
+  imageUrl?: string = '';
+
   @ApiProperty({ description: 'Descripción del producto', required: false })
-  @IsNotEmpty()
   @IsString()
   description?: string = '';
 
-  @ApiProperty({ description: 'Marca del producto', required: false })
+  @ApiProperty({ description: 'Marca del producto' })
   @IsNotEmpty()
   @IsString()
   brand?: string = '';
 
-  @ApiProperty({ description: 'Precio del producto', required: false })
+  @ApiProperty({ description: 'Precio del producto' })
   @IsNotEmpty()
   @IsNumber()
   price?: number;
 
-  @ApiProperty({ description: 'Cantidad en stock del producto', required: false })
+  @ApiProperty({ description: 'Cantidad en stock del producto' })
   @IsNotEmpty()
-  @IsNumber()
-  stock?: number;
+  @IsObject({ message: 'El stock es un Objeto JSON y debe seguir el formato de stock: { Piura: 0, Sullana: 0, Tambogrande: 0 }' })
+  stock?: Record<string, any> = {};
 
-  @ApiProperty({ description: 'Fecha de creación del producto', required: false })
+  @ApiProperty({ description: 'Fecha de creación del producto' })
   createdAt?: Date;
 
-  @ApiProperty({ description: 'Marca del producto', required: false })
+  @ApiProperty({ description: 'Modelo del producto' })
   @IsNotEmpty()
   @IsString()
   model?: string = '';
 
-  @ApiProperty({ description: 'Marca del producto', required: false })
+  @ApiProperty({ description: 'Categoria del producto' })
   @IsNotEmpty()
   @IsString()
   category?: string = '';
 
-  @ApiProperty({ description: 'Marca del producto', required: false })
+  @ApiProperty({ description: 'Manufacter del producto' })
+  @IsNotEmpty()
   @IsString()
   manufacturer?: string = '';
 
-  @ApiProperty({ description: 'Marca del producto', required: false })
+  @ApiProperty({ description: 'Manual del producto' })
+  @IsNotEmpty()
   @IsString()
   manualUrl?: string = '';
 
+  @ApiProperty({ description: 'Especificaciones del producto' })
   @IsObject()
   @IsNotEmpty()
   specs: Record<string, any> = {};
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class ProductUpdate {
-  @ApiProperty({ required: true })
+  @ApiProperty({ description: 'Nombre del producto' })
   @IsNotEmpty()
-  @IsNumber()
-  id: number = 0;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
   @IsString()
-  title?: string;
+  title: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Imagen del producto' })
   @IsString()
-  description?: string;
+  imageUrl?: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Descripción del producto', required: false })
   @IsString()
-  brand?: string;
+  description?: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Marca del producto' })
+  @IsNotEmpty()
+  @IsString()
+  brand?: string = '';
+
+  @ApiProperty({ description: 'Precio del producto' })
+  @IsNotEmpty()
   @IsNumber()
   price?: number;
 
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @IsNumber()
-  stock?: number;
+  @ApiProperty({ description: 'Cantidad en stock del producto' })
+  @IsNotEmpty()
+  @IsObject({ message: 'El stock es un Objeto JSON y debe seguir el formato de stock: { Piura: 0, Sullana: 0, Tambogrande: 0 }' })
+  stock?: Record<string, any> = {};
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Fecha de creación del producto' })
   createdAt?: Date;
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Modelo del producto' })
+  @IsNotEmpty()
   @IsString()
-  model?: string;
+  model?: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Categoria del producto' })
+  @IsNotEmpty()
   @IsString()
-  category?: string;
+  category?: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Manufacter del producto' })
+  @IsNotEmpty()
   @IsString()
-  manufacturer?: string;
+  manufacturer?: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Manual del producto' })
+  @IsNotEmpty()
   @IsString()
-  manualUrl?: string;
+  manualUrl?: string = '';
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'Especificaciones del producto' })
   @IsObject()
-  specs?: Record<string, any>;
+  @IsNotEmpty()
+  specs: Record<string, any> = {};
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ description: 'Estado del producto' })
   @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
+}
+
+export class ProductUpdateStatus {
+  @ApiProperty({ description: 'Estado del producto' })
+  @IsNotEmpty()
   @IsBoolean()
   isActive?: boolean;
 }
