@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { ProductCreate, ProductUpdate } from '../../src/models/Product';
+import { ProductCreate, ProductUpdate, ProductUpdateStatus } from '../../src/models/Product';
 import { Prisma } from '@prisma/client';
 import { describe } from '../../src/utils/getPrompt';
 
@@ -79,6 +79,17 @@ export class ProductsService {
       ...(p.manufacturer && { manufacturer: p.manufacturer }),
       ...(p.manualUrl && { manualUrl: p.manualUrl }),
       ...(p.specs && { specs: p.specs }),
+      ...(typeof p.isActive === 'boolean' && { isActive: p.isActive }),
+    };
+
+    return this.prisma.product.update({
+      where: { id },
+      data,
+    });
+  }
+
+  updateProductStatus(id: number, p: ProductUpdateStatus) {
+    const data: Prisma.ProductUpdateInput = {
       ...(typeof p.isActive === 'boolean' && { isActive: p.isActive }),
     };
 

@@ -142,8 +142,15 @@ export class ProductUpdate {
   @IsNotEmpty()
   specs: Record<string, any> = {};
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ description: 'Estado del producto' })
   @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
+}
+
+export class ProductUpdateStatus {
+  @ApiProperty({ description: 'Estado del producto' })
+  @IsNotEmpty()
   @IsBoolean()
   isActive?: boolean;
 }
