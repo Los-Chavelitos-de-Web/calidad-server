@@ -51,6 +51,14 @@ export class UserLogin {
   password: string = '';
 }
 
+export class UserChangeDataProfile {
+  @ApiProperty({ description: 'Nombre del usuario' })
+  name?: string;
+
+  @ApiProperty({ description: 'Correo del usuario' })
+  email?: string;
+}
+
 export class UserChangeIsActive {
   @ApiProperty({ description: 'Id del usuario' })
   @IsNumber()

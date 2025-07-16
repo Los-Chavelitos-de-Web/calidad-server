@@ -8,11 +8,12 @@ import {
   Param,
   Body,
   Put,
+  NotFoundException,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { AuthGuard } from '../guards/auth/auth.guard';
-import { UserChangeIsActive, UserChangeRole } from '../../src/models/User';
+import { UserChangeDataProfile, UserChangeIsActive, UserChangeRole } from '../../src/models/User';
 
 @ApiTags('Users') // Categoría para agrupar los endpoints relacionados con usuarios
 @Controller('users')
@@ -78,6 +79,33 @@ export class UsersController {
 
       throw new UnauthorizedException({
         message: 'You do not have permission to access this resource',
+      });
+    }
+  }
+
+  @Put('/update/:id')
+  @ApiResponse({
+    status: 200,
+    description: 'Perfil del usuario actualizado exitosamente.',
+  }) // Respuesta esperada
+  @ApiResponse({ status: 401, description: 'Token no válido o no encontrado.' }) // Respuesta en caso de token inválido
+  @ApiResponse({
+    status: 403,
+    description: 'No tienes permiso para acceder a este recurso.',
+  }) // Respuesta en caso de falta de permisos
+  async update(@Param('id') id: string, @Body() user: UserChangeDataProfile) {
+    try {
+      return this.userService.update(parseInt(id), user);
+    } catch (error) {
+      if (error instanceof ForbiddenException) {
+        throw new ForbiddenException( {
+          error,
+          message: 'You do not have permission to access this resource',
+        });
+      }
+
+      throw new NotFoundException({
+        message: 'El perfil no se pudo actualizar, por favor intente más tarde.',
       });
     }
   }
