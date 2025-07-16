@@ -1,6 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { UserChangeIsActive, UserChangeRole } from '../../src/models/User';
+import {
+  UserChangeDataProfile,
+  UserChangeIsActive,
+  UserChangeRole,
+} from '../../src/models/User';
 import { PrismaClientValidationError } from '@prisma/client/runtime/library';
 
 @Injectable()
@@ -14,6 +18,45 @@ export class UsersService {
   getProfileById(id: number) {
     return this.prismaService.profile.findUnique({
       where: { user_id: id },
+    });
+  }
+
+  async update(id: number, user: UserChangeDataProfile) {
+    // if (!user) {
+    //   throw new NotFoundException({
+    //     status: 404,
+    //     message: 'El perfil no se pudo actualizar, por favor intente más tarde.',
+    //   });
+    // }
+
+    const user_insert = await this.prismaService.user.update({
+      where: {
+        id,
+      },
+      data: {
+        email: user?.email,
+      },
+    });
+
+    const profile_insert = await this.prismaService.profile.update({
+      where: {
+        user_id: id,
+      },
+      data: {
+        name: user?.name,
+      },
+    });
+
+    if (user_insert || profile_insert) {
+      return {
+        ok: true,
+        message: `Perfil [${id}] acutalizado correctamente.`,
+      };
+    }
+
+    throw new NotFoundException({
+      status: 400,
+      message: 'El perfil no se pudo actualizar, por favor intente más tarde.',
     });
   }
 
