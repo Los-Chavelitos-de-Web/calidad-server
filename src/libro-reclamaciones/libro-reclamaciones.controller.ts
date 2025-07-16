@@ -12,8 +12,8 @@ import { LibroReclamacionesService } from './libro-reclamaciones.service';
 import {
   LibroReclamacionesCreate,
   LibroReclamacionesResponse,
-} from 'src/models/LibroReclamaciones';
-import { AuthGuard } from 'src/guards/auth/auth.guard';
+} from '../../src/models/LibroReclamaciones';
+import { AuthGuard } from '../../src/guards/auth/auth.guard';
 import {
   ApiBearerAuth,
   ApiHeader,

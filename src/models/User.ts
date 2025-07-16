@@ -53,9 +53,13 @@ export class UserLogin {
 
 export class UserChangeDataProfile {
   @ApiProperty({ description: 'Nombre del usuario' })
+  @IsString()
+  @IsNotEmpty()
   name?: string;
 
   @ApiProperty({ description: 'Correo del usuario' })
+  @IsString()
+  @IsNotEmpty()
   email?: string;
 }
 

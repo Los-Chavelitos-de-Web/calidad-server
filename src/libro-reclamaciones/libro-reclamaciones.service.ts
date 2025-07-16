@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import {
-  LibroReclamacionesBase,
   LibroReclamacionesCreate,
   LibroReclamacionesResponse,
   LibroReclamacionesUpdate,
 } from 'src/models/LibroReclamaciones';
-import { PrismaService } from 'src/prisma.service';
-import { sendLibroReclamaciones } from 'src/utils/sendMail';
+import { PrismaService } from '../../src/prisma.service';
+import { sendLibroReclamaciones } from '../../src/utils/sendMail';
 
 @Injectable()
 export class LibroReclamacionesService {

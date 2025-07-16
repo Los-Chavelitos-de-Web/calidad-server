@@ -126,7 +126,7 @@ describe('Pay Module', () => {
       expect(mockPrisma.saleItem.createMany).toHaveBeenCalled();
     });
 
-    // it('success should generate factura, send mail and return success msg ', async () => {
+    // it('success should generate factura, send mail and return success msg', async () => {
     //   const res = await service.success('mock-pref-id');
 
     //   expect(mockPrisma.sale.findFirst).toHaveBeenCalled();
