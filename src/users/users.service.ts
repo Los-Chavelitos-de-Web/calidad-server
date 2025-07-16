@@ -22,12 +22,12 @@ export class UsersService {
   }
 
   async update(id: number, user: UserChangeDataProfile) {
-    // if (!user) {
-    //   throw new NotFoundException({
-    //     status: 404,
-    //     message: 'El perfil no se pudo actualizar, por favor intente más tarde.',
-    //   });
-    // }
+    if (!user) {
+      throw new NotFoundException({
+        status: 404,
+        message: 'El perfil no se pudo actualizar, por favor intente más tarde.',
+      });
+    }
 
     const user_insert = await this.prismaService.user.update({
       where: {
