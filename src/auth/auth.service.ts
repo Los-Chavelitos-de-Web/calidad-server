@@ -75,7 +75,7 @@ export class AuthService {
       },
     });
 
-    if (!u?.isActive) {
+    if (u?.isActive === false) {
       throw new UnauthorizedException({
         status: 401,
         message: 'Su usuario ha sido inhabilitado.',
@@ -107,13 +107,13 @@ export class AuthService {
       } else {
         throw new UnauthorizedException({
           status: 401,
-          message: 'Password incorrect',
+          message: 'Contraseña inválida.',
         });
       }
     } else {
       throw new UnauthorizedException({
         status: 401,
-        message: 'Correo o contraseña inválido.',
+        message: 'Correo inválido.',
       });
     }
   }
