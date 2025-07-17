@@ -1,14 +1,14 @@
 import { Controller, Get, NotFoundException, Param, UseGuards } from '@nestjs/common';
 import { ReservasService } from './reservas.service';
-import { AuthGuard } from '../../src/guards/auth/auth.guard';
 import { ApiBearerAuth, ApiHeader, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { AlmacenVentasGuard } from 'src/guards/auth/AlmacenVentas.guard';
 
 @Controller('reservas')
 export class ReservasController {
   constructor(private readonly reservasService: ReservasService) {}
 
   @Get('getAll')
-  @UseGuards(AuthGuard)
+  @UseGuards(AlmacenVentasGuard)
   @ApiBearerAuth()
   @ApiHeader({
     name: 'Authorization',
@@ -25,7 +25,7 @@ export class ReservasController {
   }
 
   @Get(':id')
-  @UseGuards(AuthGuard)
+  @UseGuards(AlmacenVentasGuard)
   @ApiBearerAuth()
   @ApiHeader({
     name: 'Authorization',
@@ -54,7 +54,7 @@ export class ReservasController {
   }
 
   @Get('/items/:id')
-  @UseGuards(AuthGuard)
+  @UseGuards(AlmacenVentasGuard)
   @ApiBearerAuth()
   @ApiHeader({
     name: 'Authorization',
