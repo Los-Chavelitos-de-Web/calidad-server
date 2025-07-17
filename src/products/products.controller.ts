@@ -13,6 +13,7 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiHeader } from '@n
 import { ProductsService } from './products.service';
 import { ProductCreate, ProductUpdate, ProductUpdateStatus } from '../../src/models/Product';
 import { AuthGuard } from '../guards/auth/auth.guard';
+import { AlmacenVentasGuard } from 'src/guards/auth/AlmacenVentas.guard';
 
 @ApiTags('Products') // Categoría para agrupar los endpoints relacionados con productos
 @Controller('products')
@@ -59,7 +60,7 @@ export class ProductsController {
    * @returns Un mensaje de satisfaccion
    */
   @Post('create')
-  @UseGuards(AuthGuard)
+  @UseGuards(AlmacenVentasGuard)
   @ApiBearerAuth()
     @ApiHeader({
       name: 'Authorization'
@@ -84,7 +85,7 @@ export class ProductsController {
    * @returns Mensaje satisfactorio/error
    */
   @Put('update/:id')
-  @UseGuards(AuthGuard)
+  @UseGuards(AlmacenVentasGuard)
   @ApiBearerAuth()
   @ApiHeader({
     name: 'Authorization',
@@ -106,7 +107,7 @@ export class ProductsController {
   }
 
   @Put('status/:id')
-  @UseGuards(AuthGuard)
+  @UseGuards(AlmacenVentasGuard)
   @ApiBearerAuth()
   @ApiHeader({
     name: 'Authorization',
