@@ -75,6 +75,13 @@ export class AuthService {
       },
     });
 
+    if (!u?.isActive) {
+      throw new UnauthorizedException({
+        status: 401,
+        message: 'Su usuario ha sido inhabilitado.',
+      });
+    }
+
     if (u) {
       const authPassw = await comparePassword(user.password, u?.password);
 
@@ -106,7 +113,7 @@ export class AuthService {
     } else {
       throw new UnauthorizedException({
         status: 401,
-        message: 'User not exists',
+        message: 'Correo o contraseña inválido.',
       });
     }
   }
