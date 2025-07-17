@@ -25,10 +25,10 @@ export class AuthService {
         role: data.role,
       };
 
-      const { id } = await this.prisma.user.create({ data: user });
+      const userData = await this.prisma.user.create({ data: user });
 
       const profile = {
-        user_id: id,
+        user_id: userData.id,
         dni: data.dni,
         name: data.name,
       };
